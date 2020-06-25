@@ -25,3 +25,7 @@ We are going to use this repository, project board and kaggle.
 
 - Today we have spent time to understant the data. The data has been uploaded to [kaggle](https://www.kaggle.com/furkanizmirli/urunler).
 - We have spent some time to understand data with [this](https://www.kaggle.com/hakanonal/dataset-discovery) notebook
+
+#### 25.06.2020
+
+- Has been worked on creating a simple cnn clasification network via [this](https://www.kaggle.com/hakanonal/simple-cnn-classification) notebook
