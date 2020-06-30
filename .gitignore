@@ -130,3 +130,5 @@ dmypy.json
 
 #custom ignorres
 data/
+.vscode/
+*.h5
