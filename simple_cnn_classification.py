@@ -6,6 +6,8 @@ from keras.models import Sequential
 from keras.layers import Dense, Conv2D, Flatten, MaxPooling2D, Conv2DTranspose, BatchNormalization, UpSampling2D, Reshape, Dropout
 from keras import backend as K
 from keras.utils import to_categorical
+from keras.preprocessing.image import ImageDataGenerator
+
 
 def decouple(df):
     matrix = {}
@@ -31,8 +33,6 @@ df_test =  pd.read_csv('data/test_labels.csv')
 
 matrix_train,classes_train = decouple(df_train)
 matrix_test,classes_test = decouple(df_test)
-
-from keras.preprocessing.image import ImageDataGenerator
 
 train_datagen = ImageDataGenerator(
         rescale=1./255,validation_split=0.2)
