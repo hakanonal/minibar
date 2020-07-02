@@ -35,3 +35,12 @@ We are going to use this repository, project board and kaggle.
 - When trying to predict the model I have realized that I do not know how to re-map the label of the perdicted class numner. To figure it out I have checked dataset discovery nottebook and see that we are actually giving different class maps to train and test datasets. 
 - So I decided to combine all dataset and make divide them with keras API.
 - I have split the train and validation sets via the keras api. However results for 1 epoch is not different. Every iteration is very slow. I have spent time to buy an appropiate GPU.
+
+#### 01.07.2020
+
+- I have made extensive amount of how to code in cuda. It is a good potensionl if we move with YOLO.
+- I have started tthe simplified cnn classification on my server. It is on CPU and working very very slowly.
+
+#### 02.07.2020
+
+- My new GTR 2070 GPU has arrived spent time to install cuda and cudunn. Work in progress...
