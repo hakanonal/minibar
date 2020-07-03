@@ -45,3 +45,8 @@ We are going to use this repository, project board and kaggle.
 
 - My new GTR 2070 GPU has arrived spent time to install cuda and cudunn. Work in progress...
 - Seems that tensorflow supports cuda veresion 10.1 max. However I have installed cuda 11. So I will try to install using [this](https://www.tensorflow.org/install/gpu) page
+
+#### 03.07.2020
+
+- Applied first part of the installation script on [this](https://www.tensorflow.org/install/gpu) page, but got some unknown error. To make it clear. I have removed all drivers. including the cuda 10 and 11. And start all over. 
+- I got error on intalling cudunn so I have downloaded the appropiate 10.1 version from [this](https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html#download) page.
