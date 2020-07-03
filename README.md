@@ -19,6 +19,22 @@ We may try the following approached:
 
 We are going to use this repository, project board and kaggle. 
 
+## Some useful commands to copy paste:
+```
+#Connect to development environment with GPU
+$ ssh -i kolayoto_mp.pem hakanonal@192.168.1.44
+```
+```
+#To watch status of the GPU
+$ watch -n 0.1 nvidia-smi
+```
+```
+#To execute the python script on background
+$ nohup python3 simple_cnn_classification.py &
+```
+
+---
+
 ## Journal
 
 #### 24.06.2020
@@ -50,3 +66,8 @@ We are going to use this repository, project board and kaggle.
 
 - Applied first part of the installation script on [this](https://www.tensorflow.org/install/gpu) page, but got some unknown error. To make it clear. I have removed all drivers. including the cuda 10 and 11. And start all over. 
 - I got error on intalling cudunn so I have downloaded the appropiate 10.1 version from [this](https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html#download) page.
+- I finnally I have managed to make the GPU work. Although there are bunch of out of memmory warning messages. It still works.
+- I have overcome an error with the [this](https://stackoverflow.com/questions/43147983/could-not-create-cudnn-handle-cudnn-status-internal-error) article. (could not create cudnn handle: CUDNN_STATUS_INTERNAL_ERROR)
+- So now we are in a position to itarate faster on development environment.
+- I am using [this](https://www.pyimagesearch.com/2019/09/23/keras-starting-stopping-and-resuming-training/) article to continue to train a model that has been trained before.
+- I have downloaded the code for callbacks to mark the training process to file. I will modify it that it will detect which epoch it has stoped and set the start epoch as last one. Also I will not save the model for every epoch but I will always save the last model with same filename.
