@@ -71,3 +71,4 @@ $ nohup python3 simple_cnn_classification.py &
 - So now we are in a position to itarate faster on development environment.
 - I am using [this](https://www.pyimagesearch.com/2019/09/23/keras-starting-stopping-and-resuming-training/) article to continue to train a model that has been trained before.
 - I have downloaded the code for callbacks to mark the training process to file. I will modify it that it will detect which epoch it has stoped and set the start epoch as last one. Also I will not save the model for every epoch but I will always save the last model with same filename.
+- Started a big 100 epoch train on new GPU. Observing...

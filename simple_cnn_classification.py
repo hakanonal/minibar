@@ -61,7 +61,7 @@ train_generator = train_datagen.flow_from_dataframe(
         x_col='filename',
         y_col='class',
         target_size=(440, 440),
-        batch_size=1,
+        batch_size=4,
         class_mode='categorical',
         subset="training",)
 
@@ -71,7 +71,7 @@ validation_generator = train_datagen.flow_from_dataframe(
         x_col='filename',
         y_col='class',
         target_size=(440, 440),
-        batch_size=1,
+        batch_size=4,
         class_mode='categorical',
         subset="validation",)
 
@@ -117,7 +117,7 @@ callbacks = [
 history = model.fit(
         train_generator,
         #steps_per_epoch=100,
-        epochs=1,
+        epochs=100,
         #steps_per_epoch=100,
         validation_data=validation_generator,
         #validation_steps=100
@@ -125,20 +125,3 @@ history = model.fit(
         verbose=1
         )
 model.save(model_filename)
-
-acc = history.history['accuracy']
-val_acc = history.history['val_accuracy']
-loss = history.history['loss']
-val_loss = history.history['val_loss']
-epochs = range(1, len(acc) + 1)
-plt.plot(epochs, acc, 'bo', label='Training acc')
-plt.plot(epochs, val_acc, 'b', label='Validation acc')
-plt.title('Training and validation accuracy')
-plt.legend()
-plt.show()
-plt.figure()
-plt.plot(epochs, loss, 'bo', label='Training loss')
-plt.plot(epochs, val_loss, 'b', label='Validation loss')
-plt.title('Training and validation loss')
-plt.legend()
-plt.show()
