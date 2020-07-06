@@ -17,7 +17,7 @@ We may try the following approached:
 
 ## Environment
 
-We are going to use this repository, project board and kaggle. 
+We are going to use this repository, project board and kaggle. We are also using wandb to monitor training process. The project's workpsace is [here](https://app.wandb.ai/hakanonal/minibar). Since this is a private project please request access if you want to check it out.
 
 ## Some useful commands to copy paste:
 ```
@@ -72,3 +72,9 @@ $ nohup python3 simple_cnn_classification.py &
 - I am using [this](https://www.pyimagesearch.com/2019/09/23/keras-starting-stopping-and-resuming-training/) article to continue to train a model that has been trained before.
 - I have downloaded the code for callbacks to mark the training process to file. I will modify it that it will detect which epoch it has stoped and set the start epoch as last one. Also I will not save the model for every epoch but I will always save the last model with same filename.
 - Started a big 100 epoch train on new GPU. Observing...
+
+#### 06.07.2020
+
+- We have completed the base framework of work environment. Now we can explore different hypterparameters and different networks. The initial network has no converges at all.
+- Before moving forward again I want to also try wandb application to monitoring the training. Since It would be much easier to report the results.
+- So I have integrated the wandb application. I have better tools to monitor training. Here is the [dashboard](https://app.wandb.ai/hakanonal/minibar) for the entire project.

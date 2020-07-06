@@ -134,3 +134,4 @@ data/
 *.h5
 nohup.out
 output/
+wandb/
