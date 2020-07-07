@@ -78,3 +78,8 @@ $ nohup python3 simple_cnn_classification.py &
 - We have completed the base framework of work environment. Now we can explore different hypterparameters and different networks. The initial network has no converges at all.
 - Before moving forward again I want to also try wandb application to monitoring the training. Since It would be much easier to report the results.
 - So I have integrated the wandb application. I have better tools to monitor training. Here is the [dashboard](https://app.wandb.ai/hakanonal/minibar) for the entire project.
+
+
+#### 07.06.2020
+
+- Today I have bunmped into [this](https://towardsdatascience.com/step-by-step-guide-to-using-pretrained-models-in-keras-c9097b647b29) article. It simply explains how to use a pretrained model. So I have decided the use VGG16 as sugested in the article. And I have chopped of the top and add my own dense layer to clasify according to our dataset. I am very curious about the results.
