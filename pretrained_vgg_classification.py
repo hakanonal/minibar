@@ -9,11 +9,12 @@ config = {
     'learning_rate':0.01,
     'epoch':100,
     'batch_size':4,
-    'initial_epoch': 0
+    'initial_epoch': 0,
+    'model_name': 'VGG16_classifier'
 }
 #os.environ['WANDB_MODE'] = 'dryrun'
 #os.environ["WANDB_RESUME"] = "must"
-#os.environ["WANDB_RUN_ID"] = "t72gdkdy"
+#os.environ["WANDB_RUN_ID"] = "2xw6r2is"
 
 from pathlib import Path
 Path(checkpoint_folder).mkdir(parents=True, exist_ok=True)
