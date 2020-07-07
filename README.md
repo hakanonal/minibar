@@ -83,3 +83,7 @@ $ nohup python3 simple_cnn_classification.py &
 #### 07.06.2020
 
 - Today I have bunmped into [this](https://towardsdatascience.com/step-by-step-guide-to-using-pretrained-models-in-keras-c9097b647b29) article. It simply explains how to use a pretrained model. So I have decided the use VGG16 as sugested in the article. And I have chopped of the top and add my own dense layer to clasify according to our dataset. I am very curious about the results.
+- I have also traied to run this code on a GPU hosted environment like AWS. I have instenciated a Deep Learning AMI on ubuntu 18.04. All drivers and libraries seems to be installed right away. However, when I execute the script it does not recognize the GPU and continues to work on CPU.
+- It seems that deep learning AMI's have different versions of cuda installed. So you can switch by using [this](https://docs.aws.amazon.com/dlami/latest/devguide/tutorial-base.html) document
+- According to [this](https://docs.aws.amazon.com/dlami/latest/devguide/gpu.html) document, I have decided that g2 instance type is not suitable. So I dedcided the [chepeast](https://aws.amazon.com/tr/ec2/pricing/on-demand/) recomended instance which is g4dn.xlarge
+- We have finally sucesfully run a cloud GPU in AWS. I will also use this instance.
