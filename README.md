@@ -88,3 +88,4 @@ $ nohup python3 simple_cnn_classification.py &
 - According to [this](https://docs.aws.amazon.com/dlami/latest/devguide/gpu.html) document, I have decided that g2 instance type is not suitable. So I dedcided the [chepeast](https://aws.amazon.com/tr/ec2/pricing/on-demand/) recomended instance which is g4dn.xlarge
 - We have finally sucesfully run a cloud GPU in AWS. I will also use this instance.
 - According to pre-trained verrsion the results were even worse so I am making a terrible error here. I will research more on that.
+- 
