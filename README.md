@@ -117,3 +117,4 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - Install pip3: sudo apt install python3-pip
     - Install virtualenv: pip3 install virtualenv
     - In project environment install dependecies: pip install -r requirements.txt
+    - and we are back again...
