@@ -80,7 +80,7 @@ $ nohup python3 simple_cnn_classification.py &
 - So I have integrated the wandb application. I have better tools to monitor training. Here is the [dashboard](https://app.wandb.ai/hakanonal/minibar) for the entire project.
 
 
-#### 07.06.2020
+#### 07.07.2020
 
 - Today I have bunmped into [this](https://towardsdatascience.com/step-by-step-guide-to-using-pretrained-models-in-keras-c9097b647b29) article. It simply explains how to use a pretrained model. So I have decided the use VGG16 as sugested in the article. And I have chopped of the top and add my own dense layer to clasify according to our dataset. I am very curious about the results.
 - I have also traied to run this code on a GPU hosted environment like AWS. I have instenciated a Deep Learning AMI on ubuntu 18.04. All drivers and libraries seems to be installed right away. However, when I execute the script it does not recognize the GPU and continues to work on CPU.
@@ -88,4 +88,18 @@ $ nohup python3 simple_cnn_classification.py &
 - According to [this](https://docs.aws.amazon.com/dlami/latest/devguide/gpu.html) document, I have decided that g2 instance type is not suitable. So I dedcided the [chepeast](https://aws.amazon.com/tr/ec2/pricing/on-demand/) recomended instance which is g4dn.xlarge
 - We have finally sucesfully run a cloud GPU in AWS. I will also use this instance.
 - According to pre-trained verrsion the results were even worse so I am making a terrible error here. I will research more on that.
-- 
+
+#### 08.07.2020
+
+- Today I am begining to debug why the results are so low. I am trying to add augmentation to increase the data. Horizantal flip feels right. [This](https://machinelearningmastery.com/how-to-configure-image-data-augmentation-when-training-deep-learning-neural-networks/) article is helpful to understand the keras augmentation.
+- Also I would like to check how keras Imagedata Generator class generates images in desired augmentaion and sizes(shapes). I will discover that on [this](dataset_discovery.ipynb) old notebook.
+- In horizantol flip the texts on the products also flips. I write this just for note. I do not what may be the implications of this.
+- Spent some time on ubuntu networking. Following articles helped:
+    - https://askubuntu.com/questions/972429/how-to-bring-network-up-on-boot
+    - https://help.ubuntu.com/community/NetworkConfigurationCommandLine/Automatic
+```
+ip addr
+sudo ip link set dev enp13s0 down
+sudo dhclient enp13s0
+sudo lshw -c network
+```    
