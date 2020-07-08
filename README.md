@@ -98,8 +98,22 @@ $ nohup python3 simple_cnn_classification.py &
     - https://askubuntu.com/questions/972429/how-to-bring-network-up-on-boot
     - https://help.ubuntu.com/community/NetworkConfigurationCommandLine/Automatic
 ```
-ip addr
-sudo ip link set dev enp13s0 down
-sudo dhclient enp13s0
-sudo lshw -c network
+$ ip addr
+$ sudo ip link set dev enp12s0 down
+$ sudo dhclient enp12s0
+$ sudo lshw -c network
+$ sudo nano /etc/netplan/01-netcfg.yaml 
 ```    
+
+- Acdientially I have crached my development ubuntu environment. I have to re install it from scratch. There are the atricles I have used during re-installation.
+    - install ssh server https://www.cyberciti.biz/faq/ubuntu-linux-install-openssh-server/
+    - ssh login via public/private key authorization https://www.cyberciti.biz/tips/ssh-public-key-based-authentication-how-to.html
+    - installed git (sudo apt install git)
+    - set git username and email https://dirask.com/posts/Git-how-to-set-username-and-email-MDgRQ1?gclid=Cj0KCQjw3ZX4BRDmARIsAFYh7ZL2KaxOFkspIupa1Et1P4b1-Di0dD3h_JaIRjAlwllSK6JDAG8Ju4kaAnaBEALw_wcB 
+    - setup wireless adapter.  sudo nano /etc/netplan/01-netcfg.yaml  https://netplan.io/examples Tried to setup wireless but I could not set it up passing. Because I have re-installed entire ubuntu. Install ubuntu on wireless then activate ethernet using the above commands.
+    - Install gcc: sudo apt install gcc
+    - Install gnupg: sudo apt-get install gnupg
+    - Install cuda and cudunn. https://www.tensorflow.org/install/gpu ubuntu 18.04. Aplied the code here but instead of installing the driver first and then cuda, I installed cuda-10-1 rigth away. Also go over [this](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#post-installation-actions) document
+    - Install pip3: sudo apt install python3-pip
+    - Install virtualenv: pip3 install virtualenv
+    - In project environment install dependecies: pip install -r requirements.txt
