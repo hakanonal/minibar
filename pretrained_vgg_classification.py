@@ -6,11 +6,14 @@ state_json_filename = os.path.sep.join(["output", trial_name,"state.json"])
 checkpoint_folder = os.path.sep.join(["output", trial_name])
 
 config = {
-    'learning_rate':0.01,
+    'learning_rate':0.0001,
     'epoch':100,
     'batch_size':4,
     'initial_epoch': 0,
-    'model_name': 'VGG16_classifier'
+    'model_name': 'VGG16_classifier',
+    'input_shape_height' : 375,
+    'input_shape_width' : 262,
+    'continue_training': False
 }
 #os.environ['WANDB_MODE'] = 'dryrun'
 #os.environ["WANDB_RESUME"] = "must"
@@ -74,14 +77,14 @@ matrix_train,classes_train = decouple(df_train)
 matrix_test,classes_test = decouple(df_test)
 
 train_datagen = ImageDataGenerator(
-        validation_split=0.2)
+        validation_split=0.2,horizontal_flip=True)
 
 train_generator = train_datagen.flow_from_dataframe(
         dataframe=df_train,
         directory='data/train',
         x_col='filename',
         y_col='class',
-        target_size=(150, 105),
+        target_size=(config['input_shape_height'], config['input_shape_width']),
         batch_size=config['batch_size'],
         class_mode='categorical',
         subset="training",)
@@ -91,18 +94,18 @@ validation_generator = train_datagen.flow_from_dataframe(
         directory='data/train',
         x_col='filename',
         y_col='class',
-        target_size=(150, 105),
+        target_size=(config['input_shape_height'], config['input_shape_width']),
         batch_size=config['batch_size'],
         class_mode='categorical',
         subset="validation",)
 
 
-if os.path.isfile(model_filename):
+if os.path.isfile(model_filename) and config['continue_training']:
     model = load_model(model_filename)
 else:
     model = Sequential()
 
-    model.add(VGG16(include_top=False,input_shape=(150,105,3)))
+    model.add(VGG16(include_top=False,input_shape=(config['input_shape_height'], config['input_shape_width'],3)))
 
     model.add(Flatten())
     model.add(Dense(40))

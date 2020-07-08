@@ -118,3 +118,10 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - Install virtualenv: pip3 install virtualenv
     - In project environment install dependecies: pip install -r requirements.txt
     - and we are back again...
+    - noticed that in this fresh installation I did not get memory error.
+
+
+- So today I wanted to test if I can augment horizantally and also increase the image size. every epoch is a lot slower right now.
+    - and I have waited 1 epoch to finish took about ~15min. Either augmentation nor image size did not change the result. 
+- I am decreasing the input image shape if it is going to speed up. 
+    -Well It has speeded up significantlly however I got the memory again. However it continue to train. The results seems to be same after one epoch.
