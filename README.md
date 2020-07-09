@@ -129,4 +129,8 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     #### 09.07.2020
 
     - So I will try to discover the data as seen by the network especially for the part. I will try to visualize [here](dataset_discovery.ipynb)
+        - It suprizes me that the visualization of feature maps is bunch of random pixels. 
     - While I was discovering the layers of the VGG16 I started to looked for a multi object detection on a single image classifier. Bumped into [this](https://www.analyticsvidhya.com/blog/2019/04/build-first-multi-label-image-classification-model-python/) article. He suggest that change the last activation function softmax to sigmoid and loss to binary_crossentropy. So I will make these changes to predefined model and check what will happen.
+        - How dummy am I? the last layer of the previous version has no activation function at all.
+        - At last we are seeing some improvements: https://app.wandb.ai/hakanonal/minibar/runs/399erczn
+        - Although the accuracy graph has tendency to improve it is very slow.
