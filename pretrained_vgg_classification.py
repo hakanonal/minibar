@@ -10,7 +10,7 @@ config = {
     'epoch':100,
     'batch_size':4,
     'initial_epoch': 0,
-    'model_name': 'VGG16_classifier',
+    'model_name': 'VGG16_classifier_multi',
     'input_shape_height' : 375,
     'input_shape_width' : 262,
     'continue_training': False
@@ -108,9 +108,9 @@ else:
     model.add(VGG16(include_top=False,input_shape=(config['input_shape_height'], config['input_shape_width'],3)))
 
     model.add(Flatten())
-    model.add(Dense(40))
+    model.add(Dense(40,activation="sigmoid"))
 
-    model.compile(optimizer=Adam(learning_rate=config['learning_rate']), loss='categorical_crossentropy', metrics=['accuracy'])
+    model.compile(optimizer=Adam(learning_rate=config['learning_rate']), loss='binary_crossentropy', metrics=['accuracy'])
     model.save(model_filename)
 
 # construct the set of callbacks

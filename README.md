@@ -124,4 +124,9 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 - So today I wanted to test if I can augment horizantally and also increase the image size. every epoch is a lot slower right now.
     - and I have waited 1 epoch to finish took about ~15min. Either augmentation nor image size did not change the result. 
 - I am decreasing the input image shape if it is going to speed up. 
-    -Well It has speeded up significantlly however I got the memory again. However it continue to train. The results seems to be same after one epoch.
+    -Well It has speeded up significantlly however I got the memory again. However it continue to train. The results seems to be same after one epoch. And no change as seen [here](https://app.wandb.ai/hakanonal/minibar/runs/2uhoeblj)
+
+    #### 09.07.2020
+
+    - So I will try to discover the data as seen by the network especially for the part. I will try to visualize [here](dataset_discovery.ipynb)
+    - While I was discovering the layers of the VGG16 I started to looked for a multi object detection on a single image classifier. Bumped into [this](https://www.analyticsvidhya.com/blog/2019/04/build-first-multi-label-image-classification-model-python/) article. He suggest that change the last activation function softmax to sigmoid and loss to binary_crossentropy. So I will make these changes to predefined model and check what will happen.
