@@ -144,7 +144,7 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - I will try to set the learining rate to old value. 1e4 and see If I get similar result with the initial one. I am considering to add seed into config if I do not get consistant result. [run](https://app.wandb.ai/hakanonal/minibar/runs/nlrt81ii)
         - Yes 1e4 learning rate is defniatelly can learn.
         - I will wait tilil at least epoch 20 to make sure.
-    - On next round I will try to even decrease more. [run]()
+    - On next round I will try to even decrease more. [run](https://app.wandb.ai/hakanonal/minibar/runs/ppqmilw5)
         - 
 
 
