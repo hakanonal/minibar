@@ -134,3 +134,23 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
         - How dummy am I? the last layer of the previous version has no activation function at all.
         - At last we are seeing some improvements: https://app.wandb.ai/hakanonal/minibar/runs/399erczn
         - Although the accuracy graph has tendency to improve it is very slow.
+
+    #### 10.07.2020
+
+    - To day I am going to start to try with a lower learning rate 1e2 see what happens. [run](https://app.wandb.ai/hakanonal/minibar/runs/181iooqx)
+        - we do not have tendecy of increase in accuracy. So I have kill the process. 
+    - I am starting a run for learning rate 1e3. [run](https://app.wandb.ai/hakanonal/minibar/runs/1s67da9j)
+        - this run also is not improving I am killing int at epoch 15
+    - I will try to set the learining rate to old value. 1e4 and see If I get similar result with the initial one. I am considering to add seed into config if I do not get consistant result. [run](https://app.wandb.ai/hakanonal/minibar/runs/nlrt81ii)
+        - Yes 1e4 learning rate is defniatelly can learn.
+        - I will wait tilil at least epoch 20 to make sure.
+    - On next round I will try to even decrease more. [run](???)
+
+
+    - Meanwhile today I am trying to access my local development GPU installed computer from outside network. My router does not allow me to port forward so I am installing a intermideite server on AWS to port forward.
+        ```
+        # creting a public private key pair for the current user.
+        $ ssh-keygen -t rsa
+        ```
+        - To accomplish this task I have bumped into [this](https://superuser.com/questions/595989/ssh-through-a-router-without-port-forwarding) article.
+        - In thoery: The computer inside network should ssh with the parameter -R to the intermideite server and the computer outside the network which want to connect to inside computer should ssh with parameter -J to the intermediate server.
