@@ -6,7 +6,7 @@ state_json_filename = os.path.sep.join(["output", trial_name,"state.json"])
 checkpoint_folder = os.path.sep.join(["output", trial_name])
 
 config = {
-    'learning_rate':0.0001,
+    'learning_rate':0.00001,
     'epoch':100,
     'batch_size':4,
     'initial_epoch': 0,

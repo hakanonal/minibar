@@ -144,7 +144,8 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - I will try to set the learining rate to old value. 1e4 and see If I get similar result with the initial one. I am considering to add seed into config if I do not get consistant result. [run](https://app.wandb.ai/hakanonal/minibar/runs/nlrt81ii)
         - Yes 1e4 learning rate is defniatelly can learn.
         - I will wait tilil at least epoch 20 to make sure.
-    - On next round I will try to even decrease more. [run](???)
+    - On next round I will try to even decrease more. [run]()
+        - 
 
 
     - Meanwhile today I am trying to access my local development GPU installed computer from outside network. My router does not allow me to port forward so I am installing a intermideite server on AWS to port forward.
@@ -154,3 +155,14 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
         ```
         - To accomplish this task I have bumped into [this](https://superuser.com/questions/595989/ssh-through-a-router-without-port-forwarding) article.
         - In thoery: The computer inside network should ssh with the parameter -R to the intermideite server and the computer outside the network which want to connect to inside computer should ssh with parameter -J to the intermediate server.
+        - After my attempts I could not make it work. It has worked once but when I try to repeat the connection I can not re-connect. Here are the command that may be useful in the future.
+        ```
+        # This command should be executed from the inside computer that wants to be connected from outside. ubuntu@34.244.80.212 is my intermediate server.
+        $ ssh -R *:8022:localhost:22 ubuntu@34.244.80.212
+        ```
+        ```
+        # This command should be executed from your computer to connect inside computer via intermediate server.
+        $ ssh -J ubuntu@34.244.80.212 hakanonal@localhost -p8022
+        ```
+        - [This](https://superuser.com/questions/467398/how-do-i-exit-an-ssh-connection) is a useful article how to end a ssh session from a real computer console. Enter->~.
+        - [This](https://man.openbsd.org/OpenBSD-current/man5/ssh_config.5#ProxyJump) reference is useful for ssh .config file directives.
