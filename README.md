@@ -166,4 +166,3 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 #### 13.07.2020
 
 - I will try 1e5 once again on a cloud server right now. [run](https://app.wandb.ai/hakanonal/minibar/runs/h7qeblhi)
-    - 
