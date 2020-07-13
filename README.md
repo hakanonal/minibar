@@ -124,45 +124,50 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 - So today I wanted to test if I can augment horizantally and also increase the image size. every epoch is a lot slower right now.
     - and I have waited 1 epoch to finish took about ~15min. Either augmentation nor image size did not change the result. 
 - I am decreasing the input image shape if it is going to speed up. 
-    -Well It has speeded up significantlly however I got the memory again. However it continue to train. The results seems to be same after one epoch. And no change as seen [here](https://app.wandb.ai/hakanonal/minibar/runs/2uhoeblj)
+    -Well It has speeded up significantlly however I got the memory error again. However it continue to train. The results seems to be same after one epoch. And no change as seen [here](https://app.wandb.ai/hakanonal/minibar/runs/2uhoeblj)
 
-    #### 09.07.2020
+#### 09.07.2020
 
-    - So I will try to discover the data as seen by the network especially for the part. I will try to visualize [here](dataset_discovery.ipynb)
-        - It suprizes me that the visualization of feature maps is bunch of random pixels. 
-    - While I was discovering the layers of the VGG16 I started to looked for a multi object detection on a single image classifier. Bumped into [this](https://www.analyticsvidhya.com/blog/2019/04/build-first-multi-label-image-classification-model-python/) article. He suggest that change the last activation function softmax to sigmoid and loss to binary_crossentropy. So I will make these changes to predefined model and check what will happen.
-        - How dummy am I? the last layer of the previous version has no activation function at all.
-        - At last we are seeing some improvements: https://app.wandb.ai/hakanonal/minibar/runs/399erczn
-        - Although the accuracy graph has tendency to improve it is very slow.
+- So I will try to discover the data as seen by the network especially for the part. I will try to visualize [here](dataset_discovery.ipynb)
+    - It suprizes me that the visualization of feature maps is bunch of random pixels. 
+- While I was discovering the layers of the VGG16 I started to looked for a multi object detection on a single image classifier. Bumped into [this](https://www.analyticsvidhya.com/blog/2019/04/build-first-multi-label-image-classification-model-python/) article. He suggest that change the last activation function softmax to sigmoid and loss to binary_crossentropy. So I will make these changes to predefined model and check what will happen.
+    - How dummy am I? the last layer of the previous version has no activation function at all.
+    - At last we are seeing some improvements: https://app.wandb.ai/hakanonal/minibar/runs/399erczn
+    - Although the accuracy graph has tendency to improve it is very slow.
 
-    #### 10.07.2020
+#### 10.07.2020
 
-    - To day I am going to start to try with a lower learning rate 1e2 see what happens. [run](https://app.wandb.ai/hakanonal/minibar/runs/181iooqx)
-        - we do not have tendecy of increase in accuracy. So I have kill the process. 
-    - I am starting a run for learning rate 1e3. [run](https://app.wandb.ai/hakanonal/minibar/runs/1s67da9j)
-        - this run also is not improving I am killing int at epoch 15
-    - I will try to set the learining rate to old value. 1e4 and see If I get similar result with the initial one. I am considering to add seed into config if I do not get consistant result. [run](https://app.wandb.ai/hakanonal/minibar/runs/nlrt81ii)
-        - Yes 1e4 learning rate is defniatelly can learn.
-        - I will wait tilil at least epoch 20 to make sure.
-    - On next round I will try to even decrease more. [run](https://app.wandb.ai/hakanonal/minibar/runs/ppqmilw5)
-        - 
+- Today I am going to start to try with a lower learning rate 1e2 see what happens. [run](https://app.wandb.ai/hakanonal/minibar/runs/181iooqx)
+    - we do not have tendecy of increase in accuracy. So I have kill the process. 
+- I am starting a run for learning rate 1e3. [run](https://app.wandb.ai/hakanonal/minibar/runs/1s67da9j)
+    - this run also is not improving I am killing int at epoch 15
+- I will try to set the learining rate to old value. 1e4 and see If I get similar result with the initial one. I am considering to add seed into config if I do not get consistant result. [run](https://app.wandb.ai/hakanonal/minibar/runs/nlrt81ii)
+    - Yes 1e4 learning rate is defniatelly can learn.
+    - I will wait tilil at least epoch 20 to make sure.
+- On next round I will try to even decrease more. [run](https://app.wandb.ai/hakanonal/minibar/runs/ppqmilw5)
+    - 1e5 has even improved weel in terms of loss and validatoion acuracy. However, the acurracy a little bit worse. On the other hand we see the gradual improvement, during time.
 
 
-    - Meanwhile today I am trying to access my local development GPU installed computer from outside network. My router does not allow me to port forward so I am installing a intermideite server on AWS to port forward.
-        ```
-        # creting a public private key pair for the current user.
-        $ ssh-keygen -t rsa
-        ```
-        - To accomplish this task I have bumped into [this](https://superuser.com/questions/595989/ssh-through-a-router-without-port-forwarding) article.
-        - In thoery: The computer inside network should ssh with the parameter -R to the intermideite server and the computer outside the network which want to connect to inside computer should ssh with parameter -J to the intermediate server.
-        - After my attempts I could not make it work. It has worked once but when I try to repeat the connection I can not re-connect. Here are the command that may be useful in the future.
-        ```
-        # This command should be executed from the inside computer that wants to be connected from outside. ubuntu@34.244.80.212 is my intermediate server.
-        $ ssh -R *:8022:localhost:22 ubuntu@34.244.80.212
-        ```
-        ```
-        # This command should be executed from your computer to connect inside computer via intermediate server.
-        $ ssh -J ubuntu@34.244.80.212 hakanonal@localhost -p8022
-        ```
-        - [This](https://superuser.com/questions/467398/how-do-i-exit-an-ssh-connection) is a useful article how to end a ssh session from a real computer console. Enter->~.
-        - [This](https://man.openbsd.org/OpenBSD-current/man5/ssh_config.5#ProxyJump) reference is useful for ssh .config file directives.
+- Meanwhile today I am trying to access my local development GPU installed computer from outside network. My router does not allow me to port forward so I am installing a intermideite server on AWS to port forward.
+    ```
+    # creting a public private key pair for the current user.
+    $ ssh-keygen -t rsa
+    ```
+    - To accomplish this task I have bumped into [this](https://superuser.com/questions/595989/ssh-through-a-router-without-port-forwarding) article.
+    - In thoery: The computer inside network should ssh with the parameter -R to the intermideite server and the computer outside the network which want to connect to inside computer should ssh with parameter -J to the intermediate server.
+    - After my attempts I could not make it work. It has worked once but when I try to repeat the connection I can not re-connect. Here are the command that may be useful in the future.
+    ```
+    # This command should be executed from the inside computer that wants to be connected from outside. ubuntu@34.244.80.212 is my intermediate server.
+    $ ssh -R *:8022:localhost:22 ubuntu@34.244.80.212
+    ```
+    ```
+    # This command should be executed from your computer to connect inside computer via intermediate server.
+    $ ssh -J ubuntu@34.244.80.212 hakanonal@localhost -p8022
+    ```
+    - [This](https://superuser.com/questions/467398/how-do-i-exit-an-ssh-connection) is a useful article how to end a ssh session from a real computer console. Enter->~.
+    - [This](https://man.openbsd.org/OpenBSD-current/man5/ssh_config.5#ProxyJump) reference is useful for ssh .config file directives.
+
+#### 13.07.2020
+
+- I will try 1e5 once again on a cloud server right now. [run](https://app.wandb.ai/hakanonal/minibar/runs/h7qeblhi)
+    - 
