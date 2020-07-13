@@ -21,10 +21,6 @@ We are going to use this repository, project board and kaggle. We are also using
 
 ## Some useful commands to copy paste:
 ```
-#Connect to development environment with GPU
-$ ssh -i kolayoto_mp.pem hakanonal@192.168.1.44
-```
-```
 #To watch status of the GPU
 $ watch -n 0.1 nvidia-smi
 ```
