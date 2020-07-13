@@ -166,5 +166,8 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 #### 13.07.2020
 
 - I will try 1e5 once again on a cloud server right now. [run](https://app.wandb.ai/hakanonal/minibar/runs/h7qeblhi)
+    - The run has finished and we see the same pattren. a fix seed seems is not imporrtant as it is.
+    - The oveerall pererformance is still verry bad. Evenworse the validattion loss seems to be incresing aftter some epochs insteead of decreasing.
+    - And also it odd that 1e5 has better loss but worse acuracy. What does it mean?
 
 - I have dicded to set-up an [sweep](https://docs.wandb.com/sweeps) in wandb
