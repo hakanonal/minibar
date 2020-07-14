@@ -182,3 +182,10 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - [This](https://www.ssh.com/ssh/sshd_config/) article is for sshd config. I have configured GatewayPorts config to yes in jump AWS server.
     - [This](https://medium.com/maverislabs/proxyjump-the-ssh-option-you-probably-never-heard-of-2d7e41d43464) article is for how to config the ~/.ssh/config file so that I can easiy make connection via vscode.
     - [This](https://www.everythingcli.org/ssh-tunnelling-for-fun-and-profit-autossh/) article gives info about autossh. It is needed for local development computer to keep alive the ssh connection to intermediate jump server.
+
+
+#### 15.07.2020
+
+- I have bumped into [this](https://www.javacodemonk.com/difference-between-loss-accuracy-validation-loss-validation-accuracy-in-keras-ff358faa). It says "val_loss starts increasing, val_acc also increases.This could be case of overfitting or diverse probability values in cases where softmax is being used in output layer" which is out currerrnt case. I will try some dropouts.
+- I am also aware that the acuracy is way too small from my target. it should be >%90 but it is <%11
+- I am also planing to add extra dense layers with relu at bottom of the network.
