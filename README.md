@@ -171,3 +171,8 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - And also it odd that 1e5 has better loss but worse acuracy. What does it mean?
 
 - I have dicded to set-up an [sweep](https://docs.wandb.com/sweeps) in wandb
+
+#### 14.07.2020
+
+- sweep! To do that I need my script to convert function and make sure to call sweep and give as callback parameter.
+    - the sweep has started https://app.wandb.ai/hakanonal/minibar/sweeps/slche9g5
