@@ -154,11 +154,11 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - After my attempts I could not make it work. It has worked once but when I try to repeat the connection I can not re-connect. Here are the command that may be useful in the future.
     ```
     # This command should be executed from the inside computer that wants to be connected from outside. ubuntu@34.244.80.212 is my intermediate server.
-    $ ssh -R *:8022:localhost:22 ubuntu@34.244.80.212
+    $ ssh -R 8022:localhost:22 ubuntu@<ip_to_jump_server>
     ```
     ```
     # This command should be executed from your computer to connect inside computer via intermediate server.
-    $ ssh -J ubuntu@34.244.80.212 hakanonal@localhost -p8022
+    $ ssh -J ubuntu@<ip_to_jump_server> hakanonal@localhost -p8022
     ```
     - [This](https://superuser.com/questions/467398/how-do-i-exit-an-ssh-connection) is a useful article how to end a ssh session from a real computer console. Enter->~.
     - [This](https://man.openbsd.org/OpenBSD-current/man5/ssh_config.5#ProxyJump) reference is useful for ssh .config file directives.
@@ -176,3 +176,9 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 
 - sweep! To do that I need my script to convert function and make sure to call sweep and give as callback parameter.
     - the sweep has started https://app.wandb.ai/hakanonal/minibar/sweeps/slche9g5
+
+- Meanwhile finally I have managed to setup remote connection to my local GPU development environment. Some helpful articles are below:
+    - [This](https://www.ssh.com/ssh/tunneling/example) article is for ssh tunnuling options I have used remote port forwarding for my local development environment.
+    - [This](https://www.ssh.com/ssh/sshd_config/) article is for sshd config. I have configured GatewayPorts config to yes in jump AWS server.
+    - [This](https://medium.com/maverislabs/proxyjump-the-ssh-option-you-probably-never-heard-of-2d7e41d43464) article is for how to config the ~/.ssh/config file so that I can easiy make connection via vscode.
+    - [This](https://www.everythingcli.org/ssh-tunnelling-for-fun-and-profit-autossh/) article gives info about autossh. It is needed for local development computer to keep alive the ssh connection to intermediate jump server.
