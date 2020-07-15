@@ -5,7 +5,7 @@ _config = {
     'epoch':100,
     'batch_size':4,
     'initial_epoch': 0,
-    'model_name': 'VGG16_classifier_multi',
+    'model_name': 'VGG16_classifier_multi_agg',
     'input_shape_height' : 375,
     'input_shape_width' : 262,
     'continue_training': False
@@ -53,11 +53,16 @@ def main(config=None):
     df_train =  pd.read_csv('data/train_labels.csv')
     #df_test =  pd.read_csv('data/test_labels.csv')
 
+    from helpers.decouple import decouple
+    matrix_train,_ = decouple(df_train)
+    from helpers.matrix_to_df import matrix_to_df
+    df_train_agg = matrix_to_df(matrix_train)
+
     train_datagen = ImageDataGenerator(
             validation_split=0.2,horizontal_flip=True)
 
     train_generator = train_datagen.flow_from_dataframe(
-            dataframe=df_train,
+            dataframe=df_train_agg,
             directory='data/train',
             x_col='filename',
             y_col='class',
@@ -67,7 +72,7 @@ def main(config=None):
             subset="training",)
 
     validation_generator = train_datagen.flow_from_dataframe(
-            dataframe=df_train,
+            dataframe=df_train_agg,
             directory='data/train',
             x_col='filename',
             y_col='class',
@@ -91,7 +96,7 @@ def main(config=None):
         model.save(model_filename)
 
     # construct the set of callbacks
-    from pyimagesearch.callbacks.epochcheckpoint import EpochCheckpoint
+    from helpers.epochcheckpoint import EpochCheckpoint
     callbacks = [
         EpochCheckpoint(checkpoint_folder, every=1,startAt=0),
         WandbCallback(save_model=False)

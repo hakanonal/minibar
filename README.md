@@ -192,3 +192,9 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 - I have created a new script wit the [run](https://app.wandb.ai/hakanonal/minibar/runs/2lxvb0rk). The network is begening with 0.25 dropout after vgg and then flatten and dropout 0.5 twice after dense layers. hidden ones has relu acitavtion and last one has sigmoid. Current status is way below from the others.le 1e-5. I will wait till to the end of 100 epoch.
     - This run has a sharper acuracy increrase then other network. However the validation acuracy is stayed put. overall all metrics are worse.
 - Am I still feeding the data to network wrong? How can make sure the sturture of the data. When I feed in one image I also give the ground truth that there is one object in there. However if there is multiple objects in the picture then continousuly give different ground truth for the same picture multiple times. I should make sure that every sample has different image and the objects in them should be as array or something lie that. back to dataset discovery.
+    - Seems that I am feeding the data wrong. Networks sees that every sample has only one object in them. So I continouslly confuse my network. 
+    - I need to undertand how the image generator works. so that I can summurize the data by different images.
+    - [This](https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do) article helps me understand how generrators and yield keyword works.
+    - In [this](https://godatadriven.com/blog/keras-multi-label-classification-with-imagedatagenerator/) article it says that if a summirezi the dataframe and set the labels as array, flow_from_dataframe will handle it autmaticlly for me. Let's see is it going to work?
+        - First! I have creatded the aggragated dataframe and feed it in to image data generator. ı get multiple 1s in the output.
+    - I am going to refurbish the [simple_cnn_classification.py](simple_cnn_classification.py)
