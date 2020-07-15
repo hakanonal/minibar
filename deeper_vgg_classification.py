@@ -10,7 +10,7 @@ _config = {
     'input_shape_width' : 262,
     'continue_training': False
 }
-os.environ['WANDB_MODE'] = 'dryrun'
+#os.environ['WANDB_MODE'] = 'dryrun'
 #os.environ["WANDB_RESUME"] = "must"
 #os.environ["WANDB_RUN_ID"] = "2xw6r2is"
 
