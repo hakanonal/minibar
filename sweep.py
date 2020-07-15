@@ -1,5 +1,5 @@
-from pretrained_vgg_classification import main
+from simple_cnn_classification import main
 import wandb
 
 
-wandb.agent('hakanonal/minibar/dwpeqgg0',function=main)
+wandb.agent('hakanonal/minibar/tp9n94n9',function=main)

@@ -205,3 +205,7 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 
 - the new version has a bug though. The model save for every epoch change does not seems to be working.
     - sadly! first sweep is way worse than the old version. I hope it is a very wrong learning rate batch hpyerparameter selection. I will wait for other sweeps.
+    - Nevertheless after some 10 more runs we have the hyper parameter that the accuracy has seen the 0.2. Which is an improvement but not as expected. When I have tried the code on my local machince CPU I got 0.5 right away. Moreover the loss is still worse then non aggragatetd wrong data.
+
+- Ok this is really wierd. on my local machine I execute the same code and the acuracy start right away arround 0.65 however in GPU machine the acuracy is hanging below 0.05 which is a huge difference.
+    - I have tried to run CPU insttead of GPU on gPU enabled divce but notthing changed. My local environment has python 3.7 and GPU enabled device has 3.6. How can we find some other reasons?
