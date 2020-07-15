@@ -198,3 +198,4 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - In [this](https://godatadriven.com/blog/keras-multi-label-classification-with-imagedatagenerator/) article it says that if a summirezi the dataframe and set the labels as array, flow_from_dataframe will handle it autmaticlly for me. Let's see is it going to work?
         - First! I have creatded the aggragated dataframe and feed it in to image data generator. ı get multiple 1s in the output.
     - I am going to refurbish the [simple_cnn_classification.py](simple_cnn_classification.py)
+    - Well it is obviously corrected the issue In the first epoch I got 0.48 acuracy right away. So I am deploying it to my GPU and start a new sweep there.

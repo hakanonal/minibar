@@ -17,7 +17,7 @@ parameters:
     learning_rate:
         values: [0.000000001,0.00000001,0.0000001,0.000001,0.00001,0.0001]
     model_name:
-        value: VGG16_classifier_multi
+        value: VGG16_classifier_multi_agg
     continue_training:
         value: False
     input_shape_width:
