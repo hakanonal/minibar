@@ -199,3 +199,9 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
         - First! I have creatded the aggragated dataframe and feed it in to image data generator. ı get multiple 1s in the output.
     - I am going to refurbish the [simple_cnn_classification.py](simple_cnn_classification.py)
     - Well it is obviously corrected the issue In the first epoch I got 0.48 acuracy right away. So I am deploying it to my GPU and start a new sweep there.
+
+- The new sweep has been created [sweep](https://app.wandb.ai/hakanonal/minibar/sweeps/dwpeqgg0/overview)
+    - 
+
+- the new version has a bug though. The model save for every epoch change does not seems to be working.
+    - sadly! first sweep is way worse than the old version. I hope it is a very wrong learning rate batch hpyerparameter selection. I will wait for other sweeps.
