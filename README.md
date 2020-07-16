@@ -186,26 +186,37 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 
 #### 15.07.2020
 
-- I have bumped into [this](https://www.javacodemonk.com/difference-between-loss-accuracy-validation-loss-validation-accuracy-in-keras-ff358faa). It says "val_loss starts increasing, val_acc also increases.This could be case of overfitting or diverse probability values in cases where softmax is being used in output layer" which is out currerrnt case. I will try some dropouts.
+- I have bumped into [this](https://www.javacodemonk.com/difference-between-loss-accuracy-validation-loss-validation-accuracy-in-keras-ff358faa). It says "val_loss starts increasing, val_acc also increases.This could be case of overfitting or diverse probability values in cases where softmax is being used in output layer" which is our currerrnt case. I will try some dropouts.
 - I am also aware that the acuracy is way too small from my target. it should be >%90 but it is <%11
 - I am also planing to add extra dense layers with relu at bottom of the network.
-- I have created a new script wit the [run](https://app.wandb.ai/hakanonal/minibar/runs/2lxvb0rk). The network is begening with 0.25 dropout after vgg and then flatten and dropout 0.5 twice after dense layers. hidden ones has relu acitavtion and last one has sigmoid. Current status is way below from the others.le 1e-5. I will wait till to the end of 100 epoch.
+- I have created a new script with the [run](https://app.wandb.ai/hakanonal/minibar/runs/2lxvb0rk). The network is begening with 0.25 dropout after vgg and then flatten and dropout 0.5 twice after dense layers. hidden ones has relu acitavtion and last one has sigmoid. Current status is way below from the others.le 1e-5. I will wait till to the end of 100 epoch.
     - This run has a sharper acuracy increrase then other network. However the validation acuracy is stayed put. overall all metrics are worse.
-- Am I still feeding the data to network wrong? How can make sure the sturture of the data. When I feed in one image I also give the ground truth that there is one object in there. However if there is multiple objects in the picture then continousuly give different ground truth for the same picture multiple times. I should make sure that every sample has different image and the objects in them should be as array or something lie that. back to dataset discovery.
+- Am I still feeding the data to network wrong? How can make sure the sturture of the data. When I feed in one image I also give the ground truth that there is one object in there. However if there is multiple objects in the picture then continousuly give different ground truth for the same picture multiple times. I should make sure that every sample has different image and the objects in them should be as array or something like that. back to dataset discovery.
     - Seems that I am feeding the data wrong. Networks sees that every sample has only one object in them. So I continouslly confuse my network. 
     - I need to undertand how the image generator works. so that I can summurize the data by different images.
     - [This](https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do) article helps me understand how generrators and yield keyword works.
-    - In [this](https://godatadriven.com/blog/keras-multi-label-classification-with-imagedatagenerator/) article it says that if a summirezi the dataframe and set the labels as array, flow_from_dataframe will handle it autmaticlly for me. Let's see is it going to work?
-        - First! I have creatded the aggragated dataframe and feed it in to image data generator. ı get multiple 1s in the output.
+    - In [this](https://godatadriven.com/blog/keras-multi-label-classification-with-imagedatagenerator/) article it says that if a summarize the dataframe and set the labels as array, flow_from_dataframe will handle it autmaticlly for me. Let's see is it going to work?
+        - First! I have creatded the aggragated dataframe and feed it in to image data generator. I get multiple 1s in the output.
     - I am going to refurbish the [simple_cnn_classification.py](simple_cnn_classification.py)
     - Well it is obviously corrected the issue In the first epoch I got 0.48 acuracy right away. So I am deploying it to my GPU and start a new sweep there.
 
 - The new sweep has been created [sweep](https://app.wandb.ai/hakanonal/minibar/sweeps/dwpeqgg0/overview)
-    - 
+    - It is continuned on working but I am not very interested with the results. Hence I know there is much more improvementt area because of the environment difference. Details are below.
 
 - the new version has a bug though. The model save for every epoch change does not seems to be working.
     - sadly! first sweep is way worse than the old version. I hope it is a very wrong learning rate batch hpyerparameter selection. I will wait for other sweeps.
     - Nevertheless after some 10 more runs we have the hyper parameter that the accuracy has seen the 0.2. Which is an improvement but not as expected. When I have tried the code on my local machince CPU I got 0.5 right away. Moreover the loss is still worse then non aggragatetd wrong data.
 
 - Ok this is really wierd. on my local machine I execute the same code and the acuracy start right away arround 0.65 however in GPU machine the acuracy is hanging below 0.05 which is a huge difference.
-    - I have tried to run CPU insttead of GPU on gPU enabled divce but notthing changed. My local environment has python 3.7 and GPU enabled device has 3.6. How can we find some other reasons?
+    - I have tried to run CPU insttead of GPU on GPU enabled divce but nothing changed. My local environment has python 3.7 and GPU enabled device has 3.6. How can we find some other reasons?
+
+#### 16.07.2020
+
+- I will continue to work on environment inconsistancies. I will try to find the initial acuracy arround 0.5 or at least not below 0.1
+    - Let's check this version diffeerences. I will check the status on cloud server.
+        - Cloud 3.7.7 with GPU negative 0.05
+        - Cloud 3.6.10 with GPU positive I got 0.65 initially right away. and even validation acuracy is 0.8 it is even considerablly improving fast.
+        - localdev 3.6.9 with GPU negative 0.05
+        - local 3.7.2 no GPU positive 0.65
+    - So what the h.. is going on here?
+    - I am reading [this](https://realpython.com/intro-to-pyenv/) article
