@@ -234,3 +234,7 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - The next plan is to switch back to working environment get the requirements and compare them.
         - Ok at first glance there is bunch of differences. However, I will concantrate on ttensorflow version. Because in the cloud I know tf 2.2 is neg and tf 2.1 is positive. So it is the case here also. YES! we got positive with tf 2.1
         - So I am going to freeze the environment with tf 2.1 and continue on that version. Let's copy this to localdev GPU enabled environment.
+    - YES! we have positive in localdev even though the python vversion was not 3.7.2. it was 3.6.9. 
+
+- Let's sweep it baby! [sweep](https://app.wandb.ai/hakanonal/minibar/sweeps/a7qyh03m/overview)
+- I have deleted the agg sweeps with the run to properlly see the imprrovements of the aggragated data versiion.
