@@ -220,3 +220,17 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
         - local 3.7.2 no GPU positive 0.65
     - So what the h.. is going on here?
     - I am reading [this](https://realpython.com/intro-to-pyenv/) article
+    - I have checked [this](https://keras.io/getting_started/faq/#how-can-i-obtain-reproducible-results-using-keras-during-development) article about keras seed feeding.
+
+#### 17.07.2020
+
+- I will try to install pyenv on my local so that I can compare different versions in the same hardware.
+    - [This](https://github.com/pyenv/pyenv) is the original repository and documentation.
+    - Also [this](https://github.com/pyenv/pyenv-virtualenv) is the same repositury install the oficial virtual environment management tool.
+    - So Ithink I have nailed it. It is also working very well with vscode.
+
+- Now to create a contrrol environment. I have insttalled 3.7.2 under pyenv. So we are expecting to get positive result with this config. Let's see.
+    - Unfourtunatelly it is negative. I have installed the python packages from requirements. This leads me that the requirements python module versions has worng verrsions. Since we got negative results from localdev which we also installed frrom requirements.
+    - The next plan is to switch back to working environment get the requirements and compare them.
+        - Ok at first glance there is bunch of differences. However, I will concantrate on ttensorflow version. Because in the cloud I know tf 2.2 is neg and tf 2.1 is positive. So it is the case here also. YES! we got positive with tf 2.1
+        - So I am going to freeze the environment with tf 2.1 and continue on that version. Let's copy this to localdev GPU enabled environment.
