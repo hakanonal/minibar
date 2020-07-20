@@ -1,9 +1,9 @@
 import os
 
 _config = {
-    'learning_rate':0.00001,
-    'epoch':100,
-    'batch_size':4,
+    'learning_rate':0.0001,
+    'epoch':200,
+    'batch_size':2,
     'initial_epoch': 0,
     'model_name': 'simple_cnn_multi_agg',
     'input_shape_height' : 375,

@@ -243,3 +243,5 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 
 - All my got. This ia big milestone for me to celebrate. I have created a network that validation acuracy is more than 0.95. And there is lot's of them. https://app.wandb.ai/hakanonal/minibar/reports/The-Result-of-The-Simple-CNN-Clasification--VmlldzoxNzQ3Mjk
 - What's Next?
+- Ok let's check this model with test data.
+    - since we did not save any of these sweep runs. (because model is too big and I do not want to loose time to upload all of them.)
