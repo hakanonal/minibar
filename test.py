@@ -1,16 +1,21 @@
-import os 
-os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+#import os 
+#os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
 _config = {
     'batch_size':1,
     'input_shape_height' : 375,
     'input_shape_width' : 262,
-    'model_filename' : 'output/simple_cnn_classification/model.h5'
+    'model_filename' : 'output/simple_cnn_classification/model_v1.h5'
 }
 
 from keras.models import load_model
 from keras.preprocessing.image import ImageDataGenerator
 import pandas as pd
+import tensorflow as tf
+
+physical_devices = tf.config.experimental.list_physical_devices('GPU')
+if len(physical_devices) > 0:
+    _ = tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
 #df_train =  pd.read_csv('data/train_labels.csv')
 df_test =  pd.read_csv('data/test_labels.csv')
