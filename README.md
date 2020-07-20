@@ -238,3 +238,8 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 
 - Let's sweep it baby! [sweep](https://app.wandb.ai/hakanonal/minibar/sweeps/a7qyh03m/overview)
 - I have deleted the agg sweeps with the run to properlly see the imprrovements of the aggragated data versiion.
+
+#### 20.07.2020
+
+- All my got. This ia big milestone for me to celebrate. I have created a network that validation acuracy is more than 0.95. And there is lot's of them. https://app.wandb.ai/hakanonal/minibar/reports/The-Result-of-The-Simple-CNN-Clasification--VmlldzoxNzQ3Mjk
+- What's Next?
