@@ -29,9 +29,11 @@ test_generator = test_datagen.flow_from_dataframe(
         y_col='class',
         target_size=(_config['input_shape_height'], _config['input_shape_width']),
         batch_size=_config['batch_size'],
-        class_mode='categorical',
-        subset="training",)
+        class_mode='categorical')
 
 model = load_model(_config['model_filename'])
 score = model.evaluate_generator(test_generator)
 print(score)
+
+result = model.predict_generator(test_generator)
+print(result.shape)

@@ -246,3 +246,5 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 - Ok let's check this model with test data.
     - since we did not save any of these sweep runs. (because model is too big and I do not want to loose time to upload all of them.) I had to start a single run with best hyperparameters and capture the model.
     - Meahwhile I have  written a [test.py(test.py) script that can you can evaluate the never seen test data. I am waiting the single run to finish.
+        - I am planing to add a confusion matrix
+    - The problem I have encountered is: I have succesfully trained a model however when I feeding the data via generator I do not know the class indices' label. Generator did that for me automaticlly and I can not get back the class names. So fo the simple_cnn_classification version (for every model that has fixed output dimensions.) I need to give static list of classes so that when the model has been trained I can re find the correct label of the prediction when model is in action. 
