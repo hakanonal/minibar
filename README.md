@@ -244,4 +244,5 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 - All my got. This ia big milestone for me to celebrate. I have created a network that validation acuracy is more than 0.95. And there is lot's of them. https://app.wandb.ai/hakanonal/minibar/reports/The-Result-of-The-Simple-CNN-Clasification--VmlldzoxNzQ3Mjk
 - What's Next?
 - Ok let's check this model with test data.
-    - since we did not save any of these sweep runs. (because model is too big and I do not want to loose time to upload all of them.)
+    - since we did not save any of these sweep runs. (because model is too big and I do not want to loose time to upload all of them.) I had to start a single run with best hyperparameters and capture the model.
+    - Meahwhile I have  written a [test.py(test.py) script that can you can evaluate the never seen test data. I am waiting the single run to finish.
