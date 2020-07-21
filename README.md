@@ -248,3 +248,17 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - Meahwhile I have  written a [test.py(test.py) script that can you can evaluate the never seen test data. I am waiting the single run to finish.
         - I am planing to add a confusion matrix
     - The problem I have encountered is: I have succesfully trained a model however when I feeding the data via generator I do not know the class indices' label. Generator did that for me automaticlly and I can not get back the class names. So fo the simple_cnn_classification version (for every model that has fixed output dimensions.) I need to give static list of classes so that when the model has been trained I can re find the correct label of the prediction when model is in action. 
+
+#### 21.07.2020
+
+- So I am starting the day with fixing the class labels. 
+    - Before doing that I want to see how well the evaulation is going with current messed up class indeces.
+    - I want to also build a confusion matrix to be able to compare before and after. Afterall my assumption above may be dull.
+    - While I was checking [this](https://github.com/keras-team/keras-preprocessing/issues/289) discussion I have come realized that flow object has class_indices property. And it seems that it is like alphabetical order. I have used this.
+    - I have deleted the (test.py) and created (evaluation.ipynb) to discover the evalutaion more flexiably.
+    - I have used [this](https://www.geeksforgeeks.org/matplotlib-axes-axes-bar-in-python/) article to plt bar chart on multiple dimensions on same plot.
+    - I have used [this](https://www.kaggle.com/jprakashds/confusion-matrix-in-python-binary-class) article to plot confusion matrix
+    - So to sum it up we do not have problem of classes that has been messed up. As long as we read classes via ImageDataGenerator the classes are going to be ordered alpabeticlly and we will be evalitate the model with different test dataset which has noot been seen by the model before for training.
+    - There is no need to fix the clases right now.
+
+- Well I have managed to evaluate a sample for the model via (evaluation.ipynb), however I would like to add a confusion matrix that the total number of correct and wrong prediction for each product. So that we can see if there is a fine tune in terms of product. How can I do that?

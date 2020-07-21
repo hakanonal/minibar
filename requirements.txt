@@ -34,6 +34,7 @@ ipython-genutils==0.2.0
 isort==4.3.21
 jedi==0.17.1
 Jinja2==2.11.2
+joblib==0.16.0
 jsonschema==3.2.0
 jupyter-client==6.1.5
 jupyter-core==4.6.3
@@ -81,11 +82,13 @@ pyzmq==19.0.1
 requests==2.24.0
 requests-oauthlib==1.3.0
 rsa==4.6
+scikit-learn==0.23.1
 scipy==1.4.1
 Send2Trash==1.5.0
 sentry-sdk==0.16.0
 shortuuid==1.0.1
 six==1.15.0
+sklearn==0.0
 smmap==3.0.4
 subprocess32==3.5.4
 tensorboard==2.1.1
@@ -95,6 +98,7 @@ tensorflow-estimator==2.1.0
 termcolor==1.1.0
 terminado==0.8.3
 testpath==0.4.4
+threadpoolctl==2.1.0
 toml==0.10.1
 tornado==6.0.4
 traitlets==4.3.3
