@@ -262,3 +262,15 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - There is no need to fix the clases right now.
 
 - Well I have managed to evaluate a sample for the model via (evaluation.ipynb), however I would like to add a confusion matrix that the total number of correct and wrong prediction for each product. So that we can see if there is a fine tune in terms of product. How can I do that?
+    - Ok [this](https://www.python-course.eu/confusion_matrix.php) article very helpful in terms of understand the underhood of recall precision terms.
+        - When I read that article it explains the confusion matrix in terms of guesing classes in terms of other classes.
+    - I have checked if there is already lib that can accomplish task bump into [this](https://stackoverflow.com/questions/43076609/how-to-calculate-precision-and-recall-in-keras) and [this](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html?highlight=classification_report)
+        - So in theory if I add all the ground truth counts and prediction counts I can use the sklearn classification_report tool. Let's try
+            - side note: it turns out the if you itarrate trough a keras image data generartor it will loop forever. However you can get the size via len()
+            - Total catastrphuy: classification_report this report ouotputs 0 for all classes.
+            - Well it turns out that it is report for only images that includes only one object.
+            - So geetting the total numbers is totally nonsense I amdeleting it.
+    - Well I can make a cofusion matrix for a single sample but how can evaluate the entire test set in terms of each product prredicted.
+        - I will think about [this](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.multilabel_confusion_matrix.html) article
+
+- I have added evaluate_generator call for test data set only for now.
