@@ -274,3 +274,12 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
         - I will think about [this](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.multilabel_confusion_matrix.html) article
 
 - I have added evaluate_generator call for test data set only for now.
+
+#### 22.07.2020
+
+- Today I want to start the day with trying the following [article](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.multilabel_confusion_matrix.html) with data and trry to underrstand the result
+    - I think I have reasonable data to analyze. So you see with this function, I can 40 different confusion matrix for each class/product.
+    - My initial attempt that it seems to me the numbers are very "confused" :) So I have hyptized that since I am collecting prediction and ground truths seperatelly, the there is actually different results of differrent samples. So I am going to collectt ground truths and prediction within a single loop. I am assuming that it is going to be slow process.
+        - It is pretty fast though and I have a very satiffying result after I have ploted them with matplotlib
+        - The result is also very insightful. I have added accuracy precision and recall for each class/product
+        - I think I have evaluated the model perfectlly. I have also put the recall prercision data into table and sort them.
