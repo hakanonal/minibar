@@ -300,5 +300,7 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 
 - So since we have succesfully created simple image classifer, I would still like to see how it would be trained if we used pre-trained clasifers. So today I am planing to work on (pretrained_vgg_classification.py) I am deleting the file (deeper_vgg_classification.py) since it was a desparete branch back then to increase the metrics. Since we have solved the problem with the metrics there is no need that branch.
     - I will take the simple networks top dense layers to this new vgg16.
-
+    - Alright I have started a new [sweep](https://app.wandb.ai/hakanonal/minibar/sweeps/f38vw6n2)
+        - In the first couple of epochs it's initial metrics are performing better than simple classifier.
+        - Side Note: When I compare the GPU power consumption/temp etc the new sweep has signifcantlly working harder. TThis outcome may be normal because we are trraining a much morree deeper convolution layers.
 
