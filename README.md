@@ -304,3 +304,5 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
         - In the first couple of epochs it's initial metrics are performing better than simple classifier.
         - Side Note: When I compare the GPU power consumption/temp etc the new sweep has signifcantlly working harder. TThis outcome may be normal because we are trraining a much morree deeper convolution layers.
 
+- Meanwhile when I think in my "thinking room" I have rrelized that ı am comparing the sweeps in terms of accuracy and loss. Hopwever as seen in the evaluation notebook, recall and precision is a little bit lower than accurracy. So it is good to research on comparing the runs on using different metrics. my next move will like that.
+
