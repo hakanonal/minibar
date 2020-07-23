@@ -120,7 +120,7 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 - So today I wanted to test if I can augment horizantally and also increase the image size. every epoch is a lot slower right now.
     - and I have waited 1 epoch to finish took about ~15min. Either augmentation nor image size did not change the result. 
 - I am decreasing the input image shape if it is going to speed up. 
-    -Well It has speeded up significantlly however I got the memory error again. However it continue to train. The results seems to be same after one epoch. And no change as seen [here](https://app.wandb.ai/hakanonal/minibar/runs/2uhoeblj)
+    - Well It has speeded up significantlly however I got the memory error again. However it continue to train. The results seems to be same after one epoch. And no change as seen [here](https://app.wandb.ai/hakanonal/minibar/runs/2uhoeblj)
 
 #### 09.07.2020
 
@@ -167,8 +167,8 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 
 - I will try 1e5 once again on a cloud server right now. [run](https://app.wandb.ai/hakanonal/minibar/runs/h7qeblhi)
     - The run has finished and we see the same pattren. a fix seed seems is not imporrtant as it is.
-    - The oveerall pererformance is still verry bad. Evenworse the validattion loss seems to be incresing aftter some epochs insteead of decreasing.
-    - And also it odd that 1e5 has better loss but worse acuracy. What does it mean?
+    - The overall pererformance is still very bad. Evenworse the validattion loss seems to be incresing aftter some epochs insteead of decreasing.
+    - And also it is odd that 1e5 has better loss but worse acuracy. What does it mean?
 
 - I have dicded to set-up an [sweep](https://docs.wandb.com/sweeps) in wandb
 
@@ -195,7 +195,7 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - Seems that I am feeding the data wrong. Networks sees that every sample has only one object in them. So I continouslly confuse my network. 
     - I need to undertand how the image generator works. so that I can summurize the data by different images.
     - [This](https://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do) article helps me understand how generrators and yield keyword works.
-    - In [this](https://godatadriven.com/blog/keras-multi-label-classification-with-imagedatagenerator/) article it says that if a summarize the dataframe and set the labels as array, flow_from_dataframe will handle it autmaticlly for me. Let's see is it going to work?
+    - In [this](https://godatadriven.com/blog/keras-multi-label-classification-with-imagedatagenerator/) article it says that if I summarize the dataframe and set the labels as array, flow_from_dataframe will handle it autmaticlly for me. Let's see is it going to work?
         - First! I have creatded the aggragated dataframe and feed it in to image data generator. I get multiple 1s in the output.
     - I am going to refurbish the [simple_cnn_classification.py](simple_cnn_classification.py)
     - Well it is obviously corrected the issue In the first epoch I got 0.48 acuracy right away. So I am deploying it to my GPU and start a new sweep there.
@@ -226,13 +226,13 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 
 - I will try to install pyenv on my local so that I can compare different versions in the same hardware.
     - [This](https://github.com/pyenv/pyenv) is the original repository and documentation.
-    - Also [this](https://github.com/pyenv/pyenv-virtualenv) is the same repositury install the oficial virtual environment management tool.
-    - So Ithink I have nailed it. It is also working very well with vscode.
+    - Also [this](https://github.com/pyenv/pyenv-virtualenv) is the same repository install the oficial virtual environment management tool.
+    - So I think I have nailed it. It is also working very well with vscode.
 
 - Now to create a contrrol environment. I have insttalled 3.7.2 under pyenv. So we are expecting to get positive result with this config. Let's see.
-    - Unfourtunatelly it is negative. I have installed the python packages from requirements. This leads me that the requirements python module versions has worng verrsions. Since we got negative results from localdev which we also installed frrom requirements.
+    - Unfourtunatelly it is negative. I have installed the python packages from requirements. This leads me that the requirements python module versions has wrong verrsions. Since we got negative results from localdev which we also installed frrom requirements.
     - The next plan is to switch back to working environment get the requirements and compare them.
-        - Ok at first glance there is bunch of differences. However, I will concantrate on ttensorflow version. Because in the cloud I know tf 2.2 is neg and tf 2.1 is positive. So it is the case here also. YES! we got positive with tf 2.1
+        - Ok at first glance there is bunch of differences. However, I will concantrate on tensorflow version. Because in the cloud I know tf 2.2 is neg and tf 2.1 is positive. So it is the case here also. YES! we got positive with tf 2.1
         - So I am going to freeze the environment with tf 2.1 and continue on that version. Let's copy this to localdev GPU enabled environment.
     - YES! we have positive in localdev even though the python vversion was not 3.7.2. it was 3.6.9. 
 
@@ -241,13 +241,13 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 
 #### 20.07.2020
 
-- All my got. This ia big milestone for me to celebrate. I have created a network that validation acuracy is more than 0.95. And there is lot's of them. https://app.wandb.ai/hakanonal/minibar/reports/The-Result-of-The-Simple-CNN-Clasification--VmlldzoxNzQ3Mjk
+- All my god. This ia big milestone for me to celebrate. I have created a network that validation acuracy is more than 0.95. And there is lot's of them. https://app.wandb.ai/hakanonal/minibar/reports/The-Result-of-The-Simple-CNN-Clasification--VmlldzoxNzQ3Mjk
 - What's Next?
 - Ok let's check this model with test data.
     - since we did not save any of these sweep runs. (because model is too big and I do not want to loose time to upload all of them.) I had to start a single run with best hyperparameters and capture the model.
-    - Meahwhile I have  written a [test.py(test.py) script that can you can evaluate the never seen test data. I am waiting the single run to finish.
+    - Meahwhile I have  written a (test.py) script that can you can evaluate the never seen test data. I am waiting the single run to finish.
         - I am planing to add a confusion matrix
-    - The problem I have encountered is: I have succesfully trained a model however when I feeding the data via generator I do not know the class indices' label. Generator did that for me automaticlly and I can not get back the class names. So fo the simple_cnn_classification version (for every model that has fixed output dimensions.) I need to give static list of classes so that when the model has been trained I can re find the correct label of the prediction when model is in action. 
+    - The problem I have encountered is: I have succesfully trained a model however when I am feeding the data via generator I do not know the class indices' label. Generator did that for me automaticlly and I can not get back the class names. So fo the simple_cnn_classification version (for every model that has fixed output dimensions.) I need to give static list of classes so that when the model has been trained I can re find the correct label of the prediction when model is in action. 
 
 #### 21.07.2020
 
@@ -258,7 +258,7 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - I have deleted the (test.py) and created (evaluation.ipynb) to discover the evalutaion more flexiably.
     - I have used [this](https://www.geeksforgeeks.org/matplotlib-axes-axes-bar-in-python/) article to plt bar chart on multiple dimensions on same plot.
     - I have used [this](https://www.kaggle.com/jprakashds/confusion-matrix-in-python-binary-class) article to plot confusion matrix
-    - So to sum it up we do not have problem of classes that has been messed up. As long as we read classes via ImageDataGenerator the classes are going to be ordered alpabeticlly and we will be evalitate the model with different test dataset which has noot been seen by the model before for training.
+    - So to sum it up we do not have problem of classes that has been messed up. As long as we read classes via ImageDataGenerator the classes are going to be ordered alpabeticlly and we will be evalitate the model with different test dataset which has not been seen by the model before for training.
     - There is no need to fix the clases right now.
 
 - Well I have managed to evaluate a sample for the model via (evaluation.ipynb), however I would like to add a confusion matrix that the total number of correct and wrong prediction for each product. So that we can see if there is a fine tune in terms of product. How can I do that?
@@ -267,9 +267,9 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - I have checked if there is already lib that can accomplish task bump into [this](https://stackoverflow.com/questions/43076609/how-to-calculate-precision-and-recall-in-keras) and [this](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html?highlight=classification_report)
         - So in theory if I add all the ground truth counts and prediction counts I can use the sklearn classification_report tool. Let's try
             - side note: it turns out the if you itarrate trough a keras image data generartor it will loop forever. However you can get the size via len()
-            - Total catastrphuy: classification_report this report ouotputs 0 for all classes.
-            - Well it turns out that it is report for only images that includes only one object.
-            - So geetting the total numbers is totally nonsense I amdeleting it.
+            - Total catastrophy: classification_report this report outputs 0 for all classes.
+            - Well it turns out that it is a report for only images that includes only one object.
+            - So geetting the total numbers is totally nonsense I am deleting it.
     - Well I can make a cofusion matrix for a single sample but how can evaluate the entire test set in terms of each product prredicted.
         - I will think about [this](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.multilabel_confusion_matrix.html) article
 
@@ -277,9 +277,28 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 
 #### 22.07.2020
 
-- Today I want to start the day with trying the following [article](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.multilabel_confusion_matrix.html) with data and trry to underrstand the result
+- Today I want to start the day with trying the following [article](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.multilabel_confusion_matrix.html) with data and try to underrstand the result
     - I think I have reasonable data to analyze. So you see with this function, I can 40 different confusion matrix for each class/product.
-    - My initial attempt that it seems to me the numbers are very "confused" :) So I have hyptized that since I am collecting prediction and ground truths seperatelly, the there is actually different results of differrent samples. So I am going to collectt ground truths and prediction within a single loop. I am assuming that it is going to be slow process.
-        - It is pretty fast though and I have a very satiffying result after I have ploted them with matplotlib
+    - My initial attempt that it seems to me the numbers are very "confused" :) So I have hyptized that since I am collecting prediction and ground truths seperatelly, the there is actually different results of differrent samples. So I am going to collect ground truths and prediction within a single loop. I am assuming that it is going to be slow process.
+        - It is pretty fast though and I have a very satisfying result after I have ploted them with matplotlib
         - The result is also very insightful. I have added accuracy precision and recall for each class/product
         - I think I have evaluated the model perfectlly. I have also put the recall prercision data into table and sort them.
+
+#### 23.07.2020
+
+- To sum up my work up-to date (1 month)
+    - I have treied to create a simple image classifer.
+    - Find out that it is very slow and decided to move into GPU environment.
+    - Accomplish to create GPU environments on local and cloud.
+    - Tried to improve metrics with different networks using pre-trained ones VGG16
+    - Solved missed network parameters.
+    - Learned more about installing ubuntu and machine learning environments.
+    - Learned more about establishing multiple remote ssh connections.
+    - Learned more about how to discover data
+    - Learned about pyenv virtualenv working principles.
+    - Accomplished to fully evaluate a trained image classifier.
+
+- So since we have succesfully created simple image classifer, I would still like to see how it would be trained if we used pre-trained clasifers. So today I am planing to work on (pretrained_vgg_classification.py) I am deleting the file (deeper_vgg_classification.py) since it was a desparete branch back then to increase the metrics. Since we have solved the problem with the metrics there is no need that branch.
+    - I will take the simple networks top dense layers to this new vgg16.
+
+

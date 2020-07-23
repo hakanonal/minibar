@@ -1,9 +1,9 @@
 import os
 
 _config = {
-    'learning_rate':0.00001,
-    'epoch':100,
-    'batch_size':4,
+    'learning_rate':0.0001,
+    'epoch':200,
+    'batch_size':2,
     'initial_epoch': 0,
     'model_name': 'VGG16_classifier_multi_agg',
     'input_shape_height' : 375,
@@ -29,8 +29,8 @@ def main(config=None):
 
 
     from keras.models import Sequential,load_model
-    #from keras.layers import Dense, Conv2D, Flatten, MaxPooling2D, Conv2DTranspose, BatchNormalization, UpSampling2D, Reshape, Dropout
-    from keras.layers import Dense, Flatten
+    #from keras.layers import Dense, Conv2D, Flatten, MaxPooling2D, Conv2DTranspose, BatchNormalization, UpSampling2D, Reshape
+    from keras.layers import Dense, Flatten, Dropout
     #from keras import backend as K
     #from keras.utils import to_categorical
     from keras.preprocessing.image import ImageDataGenerator
@@ -90,7 +90,9 @@ def main(config=None):
         model.add(VGG16(include_top=False,input_shape=(config['input_shape_height'], config['input_shape_width'],3)))
 
         model.add(Flatten())
-        model.add(Dense(40,activation="sigmoid"))
+        model.add(Dense(units = 512, activation = 'relu'))
+        model.add(Dropout(0.5)) 
+        model.add(Dense(units = 40, activation = 'sigmoid'))
 
         model.compile(optimizer=Adam(learning_rate=config['learning_rate']), loss='binary_crossentropy', metrics=['accuracy'])
         model.save(model_filename)
