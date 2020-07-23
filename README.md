@@ -304,5 +304,21 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
         - In the first couple of epochs it's initial metrics are performing better than simple classifier.
         - Side Note: When I compare the GPU power consumption/temp etc the new sweep has signifcantlly working harder. TThis outcome may be normal because we are trraining a much morree deeper convolution layers.
 
-- Meanwhile when I think in my "thinking room" I have rrelized that ı am comparing the sweeps in terms of accuracy and loss. Hopwever as seen in the evaluation notebook, recall and precision is a little bit lower than accurracy. So it is good to research on comparing the runs on using different metrics. my next move will like that.
+- Meanwhile when I think in my "thinking room" I have relized that I am comparing the sweeps in terms of accuracy and loss. Hopwever as seen in the evaluation notebook, recall and precision is a little bit lower than accurracy. So it is good to research on comparing the runs on using different metrics. my next move will like that.
+    - I am starting this topic with a little bit research. I want to understand how keras metrics classes works? I also want to understand how accuracy metric is really working?
+        - I am lost already!
+        - I have learned what [one-hot](https://en.wikipedia.org/wiki/One-hot) is.
+        - I am reading [this](https://keras.io/api/losses/probabilistic_losses/#binarycrossentropy-class) in detail.
+        - I have learned the difference between categorial cross entropy and sparse cattegorial cross entropy from [here](https://stats.stackexchange.com/questions/326065/cross-entropy-vs-sparse-cross-entropy-when-to-use-one-over-the-other)
+        - Somehow I find myself looking into loss functions. What I have understand is changing the metric should not change the way network learns. Because training process tries to minimize the loss by optimizing the weights and biases.
+    - Ok how about trying to give multiple metrics to the compile method and see what happens.
+        - Well I am very excited now since precision and recall metrics seems to be already exists
+        - Well I have included the metrics precision and recall to the compile method but tthe wierd thing that when I add the accuracy with class Accuracy() It show huge difference if I added not class but by string.
+            - Yeah [this](https://neptune.ai/blog/keras-metrics) helped a lot! Seems that the key word accuracy decides best acuracy according to your network shape bla bla! How nice. So if that is true then if I use the BinaryAccuracy or other accuracy metrrics see similar results with the expresion parameter.
+                - binary_accuracy is positive
+                - CategoricalAccuracy is negative
+                - SparseTopKCategoricalAccuracy give error problly the shape is invalid to be a sparse.
+            - Well I have added bunch of metrics let's see if this is going to sync with wandb. I have to wait at least 1 epoch bout 15min on my local CPU enabled machine.
+                - Oh yeah we have bunch of metrics now. Let me organize the dashboard.
+                - I am going to stop the last sweep and upgrade the new metrics so that we can compare models better.
 
