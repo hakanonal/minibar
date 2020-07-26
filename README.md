@@ -322,3 +322,8 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
                 - Oh yeah we have bunch of metrics now. Let me organize the dashboard.
                 - I am going to stop the last sweep and upgrade the new metrics so that we can compare models better.
 
+
+#### 26.07.2020
+
+- Just checked the dashboard on the status of the [sweep](https://app.wandb.ai/hakanonal/minibar/sweeps/f38vw6n2).
+    - I have grouped the runs in terms of learning rates. Lower rates are seems to be learn fast enough and converges to the best metrics among others. Here is the [report](https://app.wandb.ai/hakanonal/minibar/reports/Pre-trained-VGG16-Network-Grouped-by-Learning-Rate--VmlldzoxODMyNDQ) for this analyze. 
