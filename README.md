@@ -327,3 +327,9 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 
 - Just checked the dashboard on the status of the [sweep](https://app.wandb.ai/hakanonal/minibar/sweeps/f38vw6n2).
     - I have grouped the runs in terms of learning rates. Lower rates are seems to be learn fast enough and converges to the best metrics among others. Here is the [report](https://app.wandb.ai/hakanonal/minibar/reports/Pre-trained-VGG16-Network-Grouped-by-Learning-Rate--VmlldzoxODMyNDQ) for this analyze. 
+
+#### 27.07.2020
+
+- I am having hard time to understand and select the base run. Suprisinglly, although most of the runs have very good precision and recall, I do not understand why mean io is under 0.5 I need to resarch on that more.
+    - What if I create a new metric exploration notebook just to explore metrics class of keras. I can test it with a sattic data with single neuron network. And see what's hapening. Let's try
+        - So I have created a new notebook just to explore hoow metrics are working. I have downloaded a simple dataset and construct a very simple model. The results seems to be very similar. At least I get high precision and recall but not high mean io. So by exploring arround this easy sample I can understand how the metrics are working.

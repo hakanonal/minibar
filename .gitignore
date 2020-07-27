@@ -129,7 +129,7 @@ dmypy.json
 .pyre/
 
 #custom ignorres
-data/
+data*/
 .vscode/
 *.h5
 nohup.out
