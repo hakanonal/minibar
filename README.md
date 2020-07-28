@@ -333,3 +333,18 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 - I am having hard time to understand and select the base run. Suprisinglly, although most of the runs have very good precision and recall, I do not understand why mean io is under 0.5 I need to resarch on that more.
     - What if I create a new metric exploration notebook just to explore metrics class of keras. I can test it with a sattic data with single neuron network. And see what's hapening. Let's try
         - So I have created a new notebook just to explore hoow metrics are working. I have downloaded a simple dataset and construct a very simple model. The results seems to be very similar. At least I get high precision and recall but not high mean io. So by exploring arround this easy sample I can understand how the metrics are working.
+    - I have decided to park this area for later.
+
+#### 28.07.2020
+
+- I have several next steps:
+    - I want to see different pre-trained network like resnet and compare it with vgg16.
+    - I want to create a new network that is not a classification network but a regresision network that predicts number of objects and/or class id of objects.
+
+- Resnet
+    - Reading [this](https://towardsdatascience.com/an-overview-of-resnet-and-its-variants-5281e2f56035https://towardsdatascience.com/an-overview-of-resnet-and-its-variants-5281e2f56035) article
+    - Checked the versions of resnet from [here](https://keras.io/api/applications/)
+    - Let's move with ResNet50V2. I will try toı discover the input and output on my dataset discovery notebook.
+    - ResNet needs to preprocess images before feeding in to the network. [This](https://stackoverflow.com/questions/50133385/preprocessing-images-generated-using-keras-function-imagedatagenerator-to-trai) article shows parameter of preprocessing.
+    - So I created a new script called (resnet_classification.py) I have configured the sweep script. Differently I have decided not to sweep different epochs. I have fixed the epoch to 200. 
+    - The new script's initial metrics on my local CPU machine is very similar with others. Hopefully I have done it right! We'll see.

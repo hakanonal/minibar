@@ -1,5 +1,5 @@
-from pretrained_vgg_classification import main
+from resnet_classification import main
 import wandb
 
 
-wandb.agent('hakanonal/minibar/f38vw6n2',function=main)
+wandb.agent('hakanonal/minibar/4o1a9cyv',function=main)
