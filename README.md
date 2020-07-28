@@ -347,4 +347,4 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - Let's move with ResNet50V2. I will try toı discover the input and output on my dataset discovery notebook.
     - ResNet needs to preprocess images before feeding in to the network. [This](https://stackoverflow.com/questions/50133385/preprocessing-images-generated-using-keras-function-imagedatagenerator-to-trai) article shows parameter of preprocessing.
     - So I created a new script called (resnet_classification.py) I have configured the sweep script. Differently I have decided not to sweep different epochs. I have fixed the epoch to 200. 
-    - The new script's initial metrics on my local CPU machine is very similar with others. Hopefully I have done it right! We'll see.
+    - The new script's initial metrics on my local CPU machine is very similar with others. Hopefully I have done it right! We'll see. [sweep](https://app.wandb.ai/hakanonal/minibar/sweeps/4o1a9cyv)
