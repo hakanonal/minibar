@@ -18,7 +18,7 @@ parameters:
         value: resnet_classifier_multi_agg
     continue_training:
         value: False
-    input_shape_width:
-        value: 375
     input_shape_height:
+        value: 375
+    input_shape_width:
         value: 262
