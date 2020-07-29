@@ -357,4 +357,33 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - Among preior runs the crashed run has 14 batch size which is the highest among others. So I will set up a new sweep that limits the batch size up most 10 unfourtunatelly. :D
     - We are moving on...
 
-- 
+- Ok so I have decided to check this mean_io metric again. To do that I have downloaded one of the prettrained vgg models from local dev enironment. I have pluged it to evalutaion notebook.
+    - First I had to solve the problem of compile. It seems that it can not load the model with tthe metrics precision. So I have give the load_model method the compile parameter false, and I compile it without precision metric. So we have done with that problem. 
+    - Second I am feeding the test data. However, the pretrained vgg data's height and width seems to be swtiched places. I could not understand why it is the case. I could not find the reason but temprolaraly I have switched them in the generator.
+    - Oh yeah! Hit to the wall hard. I have understand the reason why heaight and width has swtiched. Because I have configurered the yaml wrong. They are switched somehow. So all sweep trains are actually in wrong image sizes.
+    - By the way I have added the mean iou metric to the evalutaion notebook and it seems very consistant. with the results seen in wandb. I am pretty sure that all metrics are working well. Rolling back I have relized that I have made mistake. When I correct it the mean_iou in evaluation notebook is way above the ones that we observe in wandb.
+        - I will try to compile the recall precision and mean iou into the model evaluate with single line and see what is going to happen.
+            - Yes this result that mean iou is about 0.4 which is consistant with wandb. So there is a problem calculating mean iou with keras class.
+    - I have manually calculated the all confusiton matrix of each class. The overall precision and recall values are matches with the function evaluate brings. 
+        - When I checked the [documentation](https://keras.io/api/metrics/classification_metrics/#truepositives-class) of mean iuo of keras, it writes the formula that I want in the descripttion, but in the example the calcultaion seems different to which I do not understand.
+    - I have added the metrics classes of TP,TN,FP,FN and the result is matches with that I have calculated manually. So I need to calculate the mean iou the way I want. TP / (TP+FN+FP)
+    - Here are some articles that I have researched about metrics. It seems that mean IOU is not correct metrics for me because we do not identify the objects' area but we only clasify them.
+        - https://github.com/Cartucho/mAP
+        - https://medium.com/@jonathan_hui/map-mean-average-precision-for-object-detection-45c121a31173
+        - https://medium.com/@pds.bangalore/mean-average-precision-abd77d0b9a7e
+        - https://towardsdatascience.com/breaking-down-mean-average-precision-map-ae462f623a52 this is a llitle bit easiesr to understnd. It explains the classificattion and object detetction seperatelly.
+        - https://towardsdatascience.com/what-is-mean-average-precision-map-in-object-detection-8f893b48afd3
+    - Avarage precision seems to be the correct for us but I need to understtand it better.
+    - I am trying other metrics in keras metrics api.
+        - It seems that there are some missing parrameters in the implementtation. I think my iinstalled version of keras and/or tensorflow is not matching.
+    - I will create a new environment for latest keras tensorflow.
+        - I have installed tf 2.2 with the environment minibar-tf2.2 
+            - When I try the evaluate with this version the accuracy has gone 0.24
+            - The AUC metric has now multi_label parameter. This means it does not exixts in tf2.2
+        - I have installed tf 2.3 with the environment minibar-tf2.3 
+            - Has similar results.
+        - AUC does not meet my creteria.
+
+- In this new circumsttances I am planing to wipe all runs and align the metrics better. restart to sweep simple, vgg16, resnet respecttivlelly.
+- To conclude today, I will try to construct my own metric called: TP / (TP+FN+FP)
+    
