@@ -9,7 +9,7 @@ parameters:
     batch_size:
         distribution: int_uniform
         min: 1
-        max: 16
+        max: 10
     initial_epoch:
         value: 0
     learning_rate:
