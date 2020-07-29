@@ -347,4 +347,14 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - Let's move with ResNet50V2. I will try toı discover the input and output on my dataset discovery notebook.
     - ResNet needs to preprocess images before feeding in to the network. [This](https://stackoverflow.com/questions/50133385/preprocessing-images-generated-using-keras-function-imagedatagenerator-to-trai) article shows parameter of preprocessing.
     - So I created a new script called (resnet_classification.py) I have configured the sweep script. Differently I have decided not to sweep different epochs. I have fixed the epoch to 200. 
-    - The new script's initial metrics on my local CPU machine is very similar with others. Hopefully I have done it right! We'll see.
+    - The new script's initial metrics on my local CPU machine is very similar with others. Hopefully I have done it right! We'll see. [sweep](https://app.wandb.ai/hakanonal/minibar/sweeps/4o1a9cyv)
+
+#### 29.07.2020
+
+- Last [sweep](https://app.wandb.ai/hakanonal/minibar/sweeps/4o1a9cyv) has some problems. 4th [run](https://app.wandb.ai/hakanonal/minibar/runs/ufj9aubl/logs) has given an error.
+    - What I have understand is that GPU memory may not be enough to train resnet.
+    - [this](https://stackoverflow.com/questions/50760543/error-oom-when-allocating-tensor-with-shape/50764934) is very insightful "OOM stands for Out Of Memory. That means that your GPU has run out of space, presumably because you've allocated other tensors which are too large. You can fix this by making your model smaller or reducing your batch size. By the looks of it, you're feeding in a large image (800x1280) you may want to consider downsampling."
+    - Among preior runs the crashed run has 14 batch size which is the highest among others. So I will set up a new sweep that limits the batch size up most 10 unfourtunatelly. :D
+    - We are moving on...
+
+- 
