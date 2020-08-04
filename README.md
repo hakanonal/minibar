@@ -182,6 +182,9 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - [This](https://www.ssh.com/ssh/sshd_config/) article is for sshd config. I have configured GatewayPorts config to yes in jump AWS server.
     - [This](https://medium.com/maverislabs/proxyjump-the-ssh-option-you-probably-never-heard-of-2d7e41d43464) article is for how to config the ~/.ssh/config file so that I can easiy make connection via vscode.
     - [This](https://www.everythingcli.org/ssh-tunnelling-for-fun-and-profit-autossh/) article gives info about autossh. It is needed for local development computer to keep alive the ssh connection to intermediate jump server.
+        ```
+        autossh -R 8022:localhost:22 ubuntu@54.217.20.203
+        ```
 
 
 #### 15.07.2020
