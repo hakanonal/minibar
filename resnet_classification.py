@@ -31,7 +31,8 @@ def main(config=None):
     from keras.models import Sequential,load_model
     #from keras.layers import Dense, Conv2D, Flatten, MaxPooling2D, Conv2DTranspose, BatchNormalization, UpSampling2D, Reshape
     from keras.layers import Dense, Flatten, Dropout
-    from keras.metrics import Precision,Recall,MeanIoU
+    from keras.metrics import Precision,Recall
+    from helpers.overallperformance import OverallPerformance
     #from keras import backend as K
     #from keras.utils import to_categorical
     from keras.preprocessing.image import ImageDataGenerator
@@ -96,7 +97,7 @@ def main(config=None):
         model.add(Dropout(0.5)) 
         model.add(Dense(units = 40, activation = 'sigmoid'))
 
-        model.compile(optimizer=Adam(learning_rate=config['learning_rate']), loss='binary_crossentropy', metrics=['accuracy',Precision(),Recall(),MeanIoU(30)])
+        model.compile(optimizer=Adam(learning_rate=config['learning_rate']), loss='binary_crossentropy', metrics=['accuracy',Precision(),Recall(),OverallPerformance()])
         model.save(model_filename)
 
     # construct the set of callbacks
