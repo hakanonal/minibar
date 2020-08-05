@@ -399,3 +399,15 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - So I am trying to mimic how precision is coded and modify according to my needs. [Source](https://github.com/tensorflow/tensorflow/blob/v2.1.0/tensorflow/python/keras/metrics.py)
     - So with minor changes of [this](https://github.com/keras-team/keras/blob/2.3.1/keras/metrics.py) code on the class of Precision I have created a script called (helpers/overallperformance.py) which I know it is teriable name. But at least I will be able to measure the combined performance of recall and precision.
     - I have tested in evaluation notebook that confirmed the correct number with calculation manually.
+
+- So I want to give a way new runs with GPU with this new metric completelly compare the runs. I will delete all previous runs.
+    - I can not access to my local GPU right now. until then I will start this on cloud GPU.
+        - The cloud GPU has conda environment so I will install the same environment with my local GPU to run in parallel in later.
+        - like pyenv [this](https://towardsdatascience.com/environment-management-with-conda-python-2-3-b9961a8a5097) article is very helpful to do basic virtual environment stuff in anaconda environment.
+        - So I have created an environment called minibar on my cloud server using conda environment.
+        - I have also changed the cuda version using [this](https://docs.aws.amazon.com/dlami/latest/devguide/dlami-dg.pdf) article on section "configuring cuda versions"
+        ```
+        $ sudo rm /usr/local/cuda
+        sudo ln -s /usr/local/cuda-10.1 /usr/local/cuda
+        ```
+    - the [sweep](https://app.wandb.ai/hakanonal/minibar/sweeps/6an909zv) has started
