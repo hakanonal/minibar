@@ -391,3 +391,11 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 - To conclude today, I will try to construct my own metric called: TP / (TP+FN+FP)
     - I have decided that I will not try to understand AP and/or mAP now. For this project precision recall and TP / (TP+FN+FP) (I am not sure what this metric is called now! I am confused) will be sufficent to measure the object/product classficiation.
     
+
+#### 5.08.2020
+
+- My Own TP / (TP+FN+FP) Go...
+    - reading [this](https://keras.io/api/metrics/#creating-custom-metrics) article. It is about creating custom metrics in keras.
+    - So I am trying to mimic how precision is coded and modify according to my needs. [Source](https://github.com/tensorflow/tensorflow/blob/v2.1.0/tensorflow/python/keras/metrics.py)
+    - So with minor changes of [this](https://github.com/keras-team/keras/blob/2.3.1/keras/metrics.py) code on the class of Precision I have created a script called (helpers/overallperformance.py) which I know it is teriable name. But at least I will be able to measure the combined performance of recall and precision.
+    - I have tested in evaluation notebook that confirmed the correct number with calculation manually.
