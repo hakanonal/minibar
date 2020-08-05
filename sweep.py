@@ -1,5 +1,5 @@
-from resnet_classification import main
+from simple_cnn_classification import main
 import wandb
 
 
-wandb.agent('hakanonal/minibar/u16qcjnl',function=main)
+wandb.agent('hakanonal/minibar/6an909zv',function=main)

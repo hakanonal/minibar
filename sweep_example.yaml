@@ -1,21 +1,21 @@
-program: resnet_classification.py
+program: simple_cnn_classification.py
 method: bayes
 metric:
-    name: val_loss
-    goal: minimize
+    name: val_overall_performance_1
+    goal: maximize
 parameters:
     epoch:
         value: 200
     batch_size:
         distribution: int_uniform
         min: 1
-        max: 10
+        max: 16
     initial_epoch:
         value: 0
     learning_rate:
         values: [0.000000001,0.00000001,0.0000001,0.000001,0.00001,0.0001]
     model_name:
-        value: resnet_classifier_multi_agg
+        value: simple_cnn_multi_agg
     continue_training:
         value: False
     input_shape_height:
