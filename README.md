@@ -411,3 +411,8 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
         sudo ln -s /usr/local/cuda-10.1 /usr/local/cuda
         ```
     - the [sweep](https://app.wandb.ai/hakanonal/minibar/sweeps/6an909zv) has started
+
+#### 06.08.2020
+
+- Oyy! I have forgotten to plug the computers' electric power so that the battery has finished. That's why I could not access to my local GPU
+    - I am going to start the same sweep also inmy local GPU to run in parallel and faster.
