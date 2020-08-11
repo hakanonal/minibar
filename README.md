@@ -416,3 +416,14 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 
 - Oyy! I have forgotten to plug the computers' electric power so that the battery has finished. That's why I could not access to my local GPU
     - I am going to start the same sweep also inmy local GPU to run in parallel and faster.
+
+#### 11.08.2020
+
+- Well it's been 5 days for the simple classification. 109 runs has been completed. Pretty good. 
+    - It is certeainly clear that lr 1e-4 is the winner. 
+    - However, when I check the batch sizes I can not see a consistant result there are both good and bad results in varius batch sizes. And when I say bad I mean total catastrpohy (zero)
+    - Moreover, the best TP / (TP+FN+FP) is not above 0.83
+    - I see that the sweep has not tried all posiible batch sizes yet. I would be morre confident if it is going to work other batch sizes.
+
+- Last night I had a talk with my friend. about genetic algorithms. Curentlly I am brute forcing all posible hyper parameters, via sweep and all runs are initially random. So all trains are being trained from the begening. So I have an intension to apply the genetic algorithms to train the follow up training. This means that I need to apply to continue training inherting from previous generations. I will research about that.
+    - Additional on this idea! curentlly I am discovering only different batch sizes and learning rates only. Also I am trying to compare 3 different networks. And that's it. However, **wouldn't be nice if I could have create a single script that explores all different kind of networks incdluding much more varius hyper parameters additional on to the batch size and the learning rate.**
