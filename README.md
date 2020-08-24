@@ -438,3 +438,15 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - Design a system that feeds new data to enrich the training dataset.
     - Create a live environment that can be accessed by the other project components.
     - I want to create a new network that is not a classification network but a regresision network that predicts number of objects and/or class id of objects.
+
+- Show the corolation between the number of classes appeared in samples and the overall performance. [card](https://github.com/hakanonal/minibar/projects/1#card-44179839)
+    - I have began it by downloading the latetest resnet run which has performed over 0.83
+    - Oh yeah when I first evaluate the resnet network the performance was terriable. However I have just remembered that the samples has to pre processed for resne and my evaluation script does not do that. Let first do it.
+        - Yeah that has fixed!
+    - So how can we show the corrolation between the number of appreances of class/product in samples. 
+        - So in (evaluation.ipynb) notebook I have tried to plot the report dataframe on the same plot. To see if there is a corrolation between the appereance of the count of the class/product and the overall performance. The result is in [this](evaluation.ipynb) notebook. Unforuntunatelly, there is no direct correspondance. 
+            - It is obvious that some classes has very little samples and they have to be included more samples
+            - but the classes/products that has over 78 (that is the minimum count (damla su) that has decent amount of samples.) gives the overall performance more than %70. 
+            - There is clases/products that has less then 500 appereances gives high performance
+            - On the other hand best overall performance of class efes_malt has less then 400 appereance and it has significantlly high performance then others.
+    - To conclude: there is definatelly other parameters then class/product appreance count on traning set that effects  the overall performance.
