@@ -427,3 +427,14 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
 
 - Last night I had a talk with my friend. about genetic algorithms. Curentlly I am brute forcing all posible hyper parameters, via sweep and all runs are initially random. So all trains are being trained from the begening. So I have an intension to apply the genetic algorithms to train the follow up training. This means that I need to apply to continue training inherting from previous generations. I will research about that.
     - Additional on this idea! curentlly I am discovering only different batch sizes and learning rates only. Also I am trying to compare 3 different networks. And that's it. However, **wouldn't be nice if I could have create a single script that explores all different kind of networks incdluding much more varius hyper parameters additional on to the batch size and the learning rate.**
+
+#### 24.08.2020
+
+- Today I have completed the all runs and created a report [here](https://app.wandb.ai/hakanonal/minibar/reports/Comparison-of-SimpleCNN-VGG16-ResNet--VmlldzoyMTQ2NjE?accessToken=ne38hb69rclmjn2zgen0hsiy8t9t8adlgb6a1o0a4lxhven3mgj3njlijo57b9jb)
+
+- I have several next steps: Moved these steps to a project board [here](https://github.com/hakanonal/minibar/projects/1)
+    - Done! I want to see different pre-trained network like resnet and compare it with vgg16. report is above.
+    - Show the corolation between the number of classes appeared in samples and the overall performance.
+    - Design a system that feeds new data to enrich the training dataset.
+    - Create a live environment that can be accessed by the other project components.
+    - I want to create a new network that is not a classification network but a regresision network that predicts number of objects and/or class id of objects.
