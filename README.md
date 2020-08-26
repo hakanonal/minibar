@@ -450,3 +450,29 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
             - There is clases/products that has less then 500 appereances gives high performance
             - On the other hand best overall performance of class efes_malt has less then 400 appereance and it has significantlly high performance then others.
     - To conclude: there is definatelly other parameters then class/product appreance count on traning set that effects  the overall performance.
+
+#### 26.08.2020
+
+- Today I am spending some time to understand better how the original minibar-master resnet object detctor project has been contructed.
+
+- [Regression](https://github.com/hakanonal/minibar/projects/1#card-44179863) I am starting to create a new network that is not a classification network but a regresision network that predicts number of objects and/or class id of objects.
+    - Research
+        - Where to start! base rememberaing about [regressions](https://en.wikipedia.org/wiki/Regression_analysis)
+        - Someone like me wants to convert image classifer into object counter [here](https://stackoverflow.com/questions/59472360/classification-vs-regression-for-object-counting-with-convolutional-neural-netw)
+        - [This](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5426829/) seems very helpful. It counts the number of totamtos(red dots) on the image. There bunch of details about the network detail.
+    - So my plan is to auto convert the dataset that counts the number of objects in image and train with that. 
+        - We are already doing that in out utility function called decouple
+        - I have created a util function that converts the matrix into dataframe consists of filename and count column names
+        - I am modifying the Imagedatagenerator class mode to sparse by reading the reference [document](https://keras.io/api/preprocessing/image/)
+        - changed the last layer to 1 nouron only with no activation function.
+        - Since it is a regrression problem I have changed the loss function to mean squered error.
+        - and metrics should be very simple right? we need only accuracy and loss is enough.
+        - class_mode sparse did not worked I got error class_mode="sparse", y_col="count" column values must be strings.
+            - [this](https://stackoverflow.com/questions/41749398/using-keras-imagedatagenerator-in-a-regression-model) article tells me that class_mode other is for regression models in version 2.2.4. I am not tusing that version. but I will try.
+                - nope! error: Invalid class_mode: other; expected one of: {'multi_output', 'sparse', 'categorical', 'input', 'raw', None, 'binary'}
+                - same article has accepted answer frlow from directory. I will use sparse but I will construct the dataframe count column cast to string and let's see I got the error.
+        - Yeap I got rid of the error. however I am not sure the data generator is working good. I will discover it better.
+            - Well when I discover the data I see that the generator again re-classes the output. For example count 1 images outputs as 0 as if they are the 0th class. However we want the real value right away.
+            - [This](https://www.kaggle.com/lgmoneda/data-augmentation-regression) example notebook tried to count the number coins in the picture. It has used the regular flow method.
+            - When I read the reference document again I have solved the problem. class mode should be raw. Since it is int I should roll back to add int value (not casting to string)
+        - Yes now I am confident to deploy it to my local GPU.
