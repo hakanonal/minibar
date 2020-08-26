@@ -476,3 +476,4 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
             - [This](https://www.kaggle.com/lgmoneda/data-augmentation-regression) example notebook tried to count the number coins in the picture. It has used the regular flow method.
             - When I read the reference document again I have solved the problem. class mode should be raw. Since it is int I should roll back to add int value (not casting to string)
         - Yes now I am confident to deploy it to my local GPU.
+            - I have started a single [run](https://app.wandb.ai/hakanonal/minibar/runs/71kv8jif) on GPU. However wandb dashboard is not suiatable for this kind of regression problem maybe I can create a new workspace for that.
