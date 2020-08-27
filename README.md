@@ -477,3 +477,16 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
             - When I read the reference document again I have solved the problem. class mode should be raw. Since it is int I should roll back to add int value (not casting to string)
         - Yes now I am confident to deploy it to my local GPU.
             - I have started a single [run](https://app.wandb.ai/hakanonal/minibar/runs/71kv8jif) on GPU. However wandb dashboard is not suiatable for this kind of regression problem maybe I can create a new workspace for that.
+                - No new workspace but only speration of standart metrics and confusion matrix metrics did the job.
+
+#### 27.08.2020
+
+- Last [run](https://app.wandb.ai/hakanonal/minibar/runs/71kv8jif) has finished in ~6hrs. How can I evaluate?
+    - I have created a new notebook just copied the evaluation as eval_regrerssion
+        - [0.3180391490459442, 0.5643564462661743] which one is accuracy and which one is loss. either one loss seems under 1. very impresive!
+        - Well I have tried to evaluate the picturres one by one as I did normal clasification evaluation. Genereally it finds the right number. Event It is not accurate it is one off.
+        - It is weird that [0.03913490101695061, 0.5643564462661743] this evaluate function gives different results for different times. Which is not expected.
+        - It is also very weird that the training performance way much worse than these metrics. I should again manually calcaulate the metric and check if it is giving the same result oor not.
+        - So I am thinking to evaluate this regression in terms how accurate each sample is find. 
+            - I can measure it by find the right number or not with confusion matrix and all. 
+            - And/Or if it is not same with ground truth how off it is. I bealive mean squered error should already give that to me. if it is working corectlly I do not think to find the confusion matrix. Since if loss ise below 0.5 then it means it will generally rounded to the correct ground truth. Hoowever, I am not sure yet...
