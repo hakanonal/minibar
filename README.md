@@ -490,3 +490,32 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
         - So I am thinking to evaluate this regression in terms how accurate each sample is find. 
             - I can measure it by find the right number or not with confusion matrix and all. 
             - And/Or if it is not same with ground truth how off it is. I bealive mean squered error should already give that to me. if it is working corectlly I do not think to find the confusion matrix. Since if loss ise below 0.5 then it means it will generally rounded to the correct ground truth. Hoowever, I am not sure yet...
+
+#### 14.09.2020
+
+- And after a very long break on this project. I have come back! Hello again...
+- I have spent some time to read my journal to remember.
+- I have checked https://chooch.ai 
+    - I had signed up this service before. today I had chance to explore a little bit more. 
+    - There are bunch of pre-trained models in the app.
+    - It is possible to send images or videos and clasify them with the pretrained models. It is workiing impresivelly fast.
+    - I have cheked image clasification and object detection panels from the dashboard. Since we have multiple objects in a single image, the image clasification panel seems to be does not allow that. Hence it creates classes as folder and wants you to upload images under that classes. In this case I need to upload same picture into different classes. To test itt fully I need to fully redistribute all pictures into class folders. So that I can upload them folder/class by folder/class. I have parked this to aside for now.
+- I want to continue on regression problem!
+    - I am remembering my last notes.
+    - I have go through (eval_regresseion.ipynb) notebook.
+    - Is keras evalutate results consistant?
+        - First run [0.03128417208790779, 0.5643564462661743]
+        - Second run [0.011685364879667759, 0.5643564462661743]
+        - second number seems to be consistant. It is consisttant also with the runs that I have conducted 15days ago.
+        - I have read [this](https://stackoverflow.com/questions/51299836/what-values-are-returned-from-model-evaluate-in-keras/51303340) model has metrics_names method. When I run the method I have understand that first number is loss and second number is accuracy. I do not understand why the loss is different. Sinc accuracy is always same.
+        - Severral runs to log
+            - [0.14309091866016388, 0.5643564462661743]
+            - [0.6417807340621948, 0.5643564462661743]
+            - [0.10828681290149689, 0.5643564462661743]
+        - Well this means we are getting the right amount of product from the model in %56 times. And the ones that we can not guess right we are only 1 off since the loss is below 1.
+        - Since in my eval_regression notebook when I examine the picture by picture, I do not get conflicting results with the values that have found with evalute metthod. I will nott dig down deeper on this. For now.
+    - So I am wondering two things.
+        - Should I modify the model to find the number of objects for each product/class?
+            - If yes I wonder if the data has multiple objects for the same product/class in the same picture?
+                - I wonder this becuase if every product appears only once in a sinlge picture then the dataset would have no different then the one we have used for classification problem. Every product/class is going to be has 1 in one hot encoded output. So I am planing to discover this situtation in (dataset_discovery.ipynb)
+        - Shoould I improve the accuracy. If yes how could I improve accuracy? which is a very big question.
