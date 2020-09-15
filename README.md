@@ -499,7 +499,7 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - I had signed up this service before. today I had chance to explore a little bit more. 
     - There are bunch of pre-trained models in the app.
     - It is possible to send images or videos and clasify them with the pretrained models. It is workiing impresivelly fast.
-    - I have cheked image clasification and object detection panels from the dashboard. Since we have multiple objects in a single image, the image clasification panel seems to be does not allow that. Hence it creates classes as folder and wants you to upload images under that classes. In this case I need to upload same picture into different classes. To test itt fully I need to fully redistribute all pictures into class folders. So that I can upload them folder/class by folder/class. I have parked this to aside for now.
+    - I have cheked image clasification and object detection panels from the dashboard. Since we have multiple objects in a single image, the image clasification panel seems to be does not allow that. Hence it creates classes as folder and wants you to upload images under that classes. In this case I need to upload same picture into different classes. To test it fully I need to fully redistribute all pictures into class folders. So that I can upload them folder/class by folder/class. I have parked this to aside for now.
 - I want to continue on regression problem!
     - I am remembering my last notes.
     - I have go through (eval_regresseion.ipynb) notebook.
@@ -518,4 +518,14 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
         - Should I modify the model to find the number of objects for each product/class?
             - If yes I wonder if the data has multiple objects for the same product/class in the same picture?
                 - I wonder this becuase if every product appears only once in a sinlge picture then the dataset would have no different then the one we have used for classification problem. Every product/class is going to be has 1 in one hot encoded output. So I am planing to discover this situtation in (dataset_discovery.ipynb)
-        - Shoould I improve the accuracy. If yes how could I improve accuracy? which is a very big question.
+        - Should I improve the accuracy. If yes how could I improve accuracy? which is a very big question.
+
+#### 15.09.2020
+
+- Today I want to start to discover data and find that if there is more than one appearance of a single product/class in a single picture.
+    - I have tried to discover if a product/class appears more than once in a single image. I have found that we have only handful of those samples. they are listed in (dataset_discovery.ipynb) notebook. 
+    - When checked all of them  manually one by one almost all of them are actually mis-labeled.
+    - So to conclude there is a big evidance that the data has some mis-labeled data which may acutally decreases the accuracy and performance.
+        - How can we somehow detect mis-labeled data?
+- I have decided to prepeare the resnet_regression model for each class ready and put aside the regression [card](https://github.com/hakanonal/minibar/projects/1#card-44179863). After that I will ready to get back in touch with the project team and find a common way to increase the training data and also corrrect the mis-labeled data.
+    - 
