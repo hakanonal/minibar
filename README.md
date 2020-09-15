@@ -533,3 +533,5 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
         - I have copied the resnet_regression.py script with the classed version. And also created a verrsion of matrix_to_df that outputs each seperate product/class as seperate columns. It is ready to deploy to local GPU
             - It has started [run](https://app.wandb.ai/hakanonal/minibar/runs/49td0rbw)
             - Meanwhile we can work on evaluation notebook.
+            - Finding the total number of objects in a picture is not same with finding the numbr of objects for different products. Accuracy is way under normal.
+            - Accuracy is very bad and loss is very good. I will evaluate after the run has finished.
