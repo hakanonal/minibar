@@ -531,3 +531,5 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - So to do that I need to again understand the process of keras ImageGeneration.
     - [This](https://medium.com/@vijayabhaskar96/multi-label-image-classification-tutorial-with-keras-imagedatagenerator-cd541f8eaf24) article helped me to understand the multi labled classes. So I will convert matrix to dataframe for each class seperate column. And the class_mode iis again going to be raw because we are solving a regression problem.
         - I have copied the resnet_regression.py script with the classed version. And also created a verrsion of matrix_to_df that outputs each seperate product/class as seperate columns. It is ready to deploy to local GPU
+            - It has started [run](https://app.wandb.ai/hakanonal/minibar/runs/49td0rbw)
+            - Meanwhile we can work on evaluation notebook.
