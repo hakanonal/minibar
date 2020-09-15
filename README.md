@@ -528,4 +528,6 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     - So to conclude there is a big evidance that the data has some mis-labeled data which may acutally decreases the accuracy and performance.
         - How can we somehow detect mis-labeled data?
 - I have decided to prepeare the resnet_regression model for each class ready and put aside the regression [card](https://github.com/hakanonal/minibar/projects/1#card-44179863). After that I will ready to get back in touch with the project team and find a common way to increase the training data and also corrrect the mis-labeled data.
-    - 
+    - So to do that I need to again understand the process of keras ImageGeneration.
+    - [This](https://medium.com/@vijayabhaskar96/multi-label-image-classification-tutorial-with-keras-imagedatagenerator-cd541f8eaf24) article helped me to understand the multi labled classes. So I will convert matrix to dataframe for each class seperate column. And the class_mode iis again going to be raw because we are solving a regression problem.
+        - I have copied the resnet_regression.py script with the classed version. And also created a verrsion of matrix_to_df that outputs each seperate product/class as seperate columns. It is ready to deploy to local GPU
