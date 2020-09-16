@@ -535,3 +535,4 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
             - Meanwhile we can work on evaluation notebook.
             - Finding the total number of objects in a picture is not same with finding the numbr of objects for different products. Accuracy is way under normal.
             - Accuracy is very bad and loss is very good. I will evaluate after the run has finished.
+            - Yeap the evaluation is also very bad in accuracy %4 loss is good. I am planing evaluate it in terms of confusion matrixes.
