@@ -536,3 +536,16 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
             - Finding the total number of objects in a picture is not same with finding the numbr of objects for different products. Accuracy is way under normal.
             - Accuracy is very bad and loss is very good. I will evaluate after the run has finished.
             - Yeap the evaluation is also very bad in accuracy %4 loss is good. I am planing evaluate it in terms of confusion matrixes.
+
+#### 14.11.2020
+
+- Well I have gave a big gap for this project. It is not finished yet. Curentlly I am not motivating to work on this because the team is using thir own model anyways. And also they want me to help on a error that they can not solve with it. So I have switched to that. 
+- When we were working for that error, I saw that there was a very good way of evaluation for classifications model. So today I only want to show that representation here. The evalutaion apperance was much more lean and much more meaningful. It was a confusion matrix and the rows and columns were the classes/products of ground truth and prrediction. The value was the number of predictions. I feel very dumb that why I did not bring that simple solution. This method is much better because it also shows which ground truth class/product is predicted. So go...
+    - I'll  evaluate my classification (not regression) models so I am going to use [evaluation.ipynb](evaluation.ipynb)
+    - Yeah I remember why I could not do ordinary confusiton matrix now. Because, my output can contain multiple object in a single sample.
+    - Then how the team has made that confusion matrix I will examine their code. I did not understand a bit it is too complicated.
+    - I have also cheked the multi label confusion matrix  exmaple on the net. It is the way I did.
+    - Can I count them in a 40x40 matrix?
+        - Well I am trying to consolidate the counts in a single CF however, consider this case.  There is a sample that contatnins 17 products in them 11 of them are mathes with the predicted however 4 ground truth can not be find but 2 of the predicted products acutally does not exists. So How can I count these numbers to their respective products.
+        - So I am confused myself. How the other team made that confusion mattrix... Think!
+        - I have messed up and tired. I am parking this topic here last part of the evaluation.ipnyb is not working properlly though.
