@@ -17,17 +17,7 @@ We may try the following approached:
 
 ## Environment
 
-We are going to use this repository, project board and kaggle. We are also using wandb to monitor training process. The project's workpsace is [here](https://app.wandb.ai/hakanonal/minibar). Since this is a private project please request access if you want to check it out.
-
-## Some useful commands to copy paste:
-```
-#To watch status of the GPU
-$ watch -n 0.1 nvidia-smi
-```
-```
-#To execute the python script on background
-$ nohup python3 simple_cnn_classification.py &
-```
+We are going to use this repository, project board and kaggle. We are also using wandb to monitor training process. The project's workpsace is [here](https://app.wandb.ai/hakanonal/minibar).
 
 ---
 
