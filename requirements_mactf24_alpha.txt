@@ -31,7 +31,7 @@ h5py @ file:///var/folders/_x/ysf6r41n0d54yl5_ts3xbqqr0000gn/T/tmp.G3oZnMnz/tens
 idna==2.10
 importlib-metadata==1.7.0
 ipykernel==5.3.2
-ipython==7.16.1
+ipython==7.16.3
 ipython-genutils==0.2.0
 isort==4.3.21
 jedi==0.17.1
