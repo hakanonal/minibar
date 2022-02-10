@@ -94,7 +94,7 @@ smmap==3.0.4
 subprocess32==3.5.4
 tensorboard==2.4.1
 tensorboard-plugin-wit==1.8.0
-tensorflow==2.4.1
+tensorflow==2.5.3
 tensorflow-addons-macos @ file:///var/folders/_x/ysf6r41n0d54yl5_ts3xbqqr0000gn/T/tmp.G3oZnMnz/tensorflow_macos/x86_64/tensorflow_addons_macos-0.1a2-cp38-cp38-macosx_11_0_x86_64.whl
 tensorflow-estimator==2.4.0
 tensorflow-macos @ file:///var/folders/_x/ysf6r41n0d54yl5_ts3xbqqr0000gn/T/tmp.G3oZnMnz/tensorflow_macos/x86_64/tensorflow_macos-0.1a2-cp38-cp38-macosx_11_0_x86_64.whl
