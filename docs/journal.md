@@ -530,3 +530,14 @@ $ sudo nano /etc/netplan/01-netcfg.yaml
     ```
     - So I continue to install this branch
     - So after bunch of serrial tries. I have cut off some parts of the my code just to see if the GPU is accessable via tf. I have managed to run it but it was not fast at all. Moreover I did not see any progreess on %GPU event monitor. So I roll back my changes.
+
+#### 11.12.2022
+
+- I have bought a new PC and put my GPU in it. So I am reinstalling this project into that PC and see I can make it work in windows envionent.
+    - Have installed the conda environment with CUDA and cudunn.
+    - I have installed openssh to windows 11 so I can remotelly connect it from my computer and develop remotelly.
+        - when you connect with ssh and when terminal is opened the conda environment and virtual environment does not activate automaticlly. So following lines have to be executed manually.
+        ```
+        C:/Users/hakan/anaconda3/Scripts/activate
+        conda activate minibar
+        ```
