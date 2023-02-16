@@ -113,6 +113,6 @@ wandb==0.9.2
 watchdog==0.10.3
 wcwidth==0.2.5
 webencodings==0.5.1
-Werkzeug==1.0.1
+Werkzeug==2.2.3
 wrapt==1.12.1
 zipp==3.1.0
